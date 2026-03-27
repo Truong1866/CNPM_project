@@ -1,0 +1,6 @@
+Tool              | Version       | Link dowload
+JDK               | 25.0.2        | https://www.oracle.com/java/technologies/downloads/#jdk25-windows
+JavaFX            | 25.0.2        | https://gluonhq.com/products/javafx/
+MySQL sever       | 9.6 or 8.4.8  | https://dev.mysql.com/downloads/mysql/
+MySQL workbench   | 8.0.46        | https://dev.mysql.com/downloads/workbench/
+Maven (option)    | 3.9.14        | https://maven.apache.org/install.html
