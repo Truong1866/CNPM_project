@@ -4,3 +4,5 @@ JavaFX            | 25.0.2        | https://gluonhq.com/products/javafx/
 MySQL sever       | 9.6 or 8.4.8  | https://dev.mysql.com/downloads/mysql/
 MySQL workbench   | 8.0.46        | https://dev.mysql.com/downloads/workbench/
 Maven (option)    | 3.9.14        | https://maven.apache.org/install.html
+git               |               | https://git-scm.com/install/windows
+scene builder (UI)|               | https://gluonhq.com/products/scene-builder/#download
