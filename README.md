@@ -1,4 +1,5 @@
 # CNPM_project
+Tài liệu liên quan đến dựa án [Tại đây](https://drive.google.com/drive/folders/1k0PA6YF26ZEIcBk8OdzGHb8hhUWfktM4?usp=sharing)  
 **GIỚI THIỆU BÀI TOÁN**    
 Chung cư BlueMoon tọa lạc ngay ngã tư Văn Phú được khởi công xây dựng năm 2021
 và hoàn thành vào 2023. Chung cư được xây dựng trên diện tích 450m2, gồm 30 tầng,
