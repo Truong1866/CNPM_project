@@ -24,6 +24,11 @@
       <artifactId>javafx-fxml</artifactId>
       <version>21.0.6</version>
     </dependency>
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>8.0.33</version>
+      </dependency>
 
 <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -58,7 +63,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>application.cnpm_project/application.cnpm_project.HelloApplication</mainClass>
+              <mainClass>application.main</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

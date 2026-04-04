@@ -1,8 +1,10 @@
-module application.cnpm_project {
+module application {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
+    requires mysql.connector.j;
 
 
-    opens application.cnpm_project to javafx.fxml;
-    exports application.cnpm_project;
+    opens application to javafx.fxml;
+    exports application;
 }
