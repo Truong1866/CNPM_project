@@ -1,4 +1,4 @@
-package moduls;
+package models;
 
 public class NguoiDung_HoKhau {
     private String maNguoiDung;

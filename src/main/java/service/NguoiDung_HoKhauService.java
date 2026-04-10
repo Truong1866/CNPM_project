@@ -1,6 +1,6 @@
 package service;
 
-import moduls.NguoiDung_HoKhau;
+import models.NguoiDung_HoKhau;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

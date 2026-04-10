@@ -1,6 +1,6 @@
 package service;
 
-import moduls.KhoanThu;
+import models.KhoanThu;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

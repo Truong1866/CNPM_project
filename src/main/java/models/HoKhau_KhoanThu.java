@@ -1,4 +1,4 @@
-package moduls;
+package models;
 
 public class HoKhau_KhoanThu {
     private String maHo;

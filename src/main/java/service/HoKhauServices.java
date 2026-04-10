@@ -1,6 +1,6 @@
 package service;
 
-import moduls.HoKhau;
+import models.HoKhau;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.TrangChuPaneControl">
+    <children>
+        <Pane fx:id="mainPane" prefHeight="520.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <children>
+                <Group fx:id="nhan_khau" layoutX="198.0" layoutY="85.0" onMouseClicked="#nhan_khau">
+                    <children>
+                        <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/nhan_khau.png" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="59.0" prefHeight="19.0" prefWidth="73.0" text="Nhân Khẩu" />
+                    </children>
+                </Group>
+                <Group fx:id="ho_khau" layoutX="37.0" layoutY="84.0" onMouseClicked="#ho_khau">
+                    <children>
+                        <ImageView fitHeight="63.0" fitWidth="65.0" layoutX="9.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/ho_khau.png" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="63.0" prefHeight="13.0" prefWidth="81.0" text="Hộ Khẩu" />
+                    </children>
+                </Group>
+                <Group fx:id="khoan_thu" layoutX="375.0" layoutY="83.0" onMouseClicked="#khoan_thu">
+                    <children>
+                        <ImageView fitHeight="63.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/khoan_thu.png" />
+                            </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" layoutX="3.0" layoutY="66.0" text="Khoản Thu" />
+                    </children>
+                </Group>
+                <Group fx:id="can_ho" layoutX="547.0" layoutY="84.0" onMouseClicked="#can_ho">
+                    <children>
+                        <Label layoutX="12.0" layoutY="63.0" text="Căn Hộ" />
+                        <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/can_ho.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Group>
+                <Group layoutX="680.0" layoutY="82.0" onMouseClicked="#thong_ke">
+                    <children>
+                        <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/thong_ke.png" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutY="63.0" prefHeight="17.0" prefWidth="73.0" text="Thống Kê" />
+                    </children>
+                </Group>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

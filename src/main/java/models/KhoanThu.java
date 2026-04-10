@@ -1,4 +1,4 @@
-package moduls;
+package models;
 
 public class KhoanThu {
     private String maKhoanThu;

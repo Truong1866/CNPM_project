@@ -1,6 +1,6 @@
 package service;
 
-import moduls.CanHo;
+import models.CanHo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

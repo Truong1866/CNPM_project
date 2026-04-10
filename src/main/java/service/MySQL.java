@@ -15,9 +15,9 @@ public class MySQL {
         String host = "localhost";
         String port = "3306";
         String name = "quan_ly_chung_cu";
-        String url = "jdbc:" + type + "://" + host + ":" + port + "/" + name;
         String user = "root";
         String password = "Mafumafu1#";
+        String url = "jdbc:" + type + "://" + host + ":" + port + "/" + name;
         return connect(url, user, password);
     }
 }
