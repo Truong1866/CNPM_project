@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/DangNhapCSS.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.DangNhapControl">
+   <children>
+      <Label id="NhanTenGioiThieu" alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="100.0" prefHeight="43.0" prefWidth="450.0" stylesheets="@../css/DangNhapCSS.css" text="QUẢN LÝ CHUNG CƯ BLUEMOON" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font></Label>
+      <TextField id="ten_ma_cccd" fx:id="ten_ma_cccd" layoutX="278.0" layoutY="201.0" prefHeight="32.0" prefWidth="243.0" promptText="Tên đăng nhập - Mã đăng nhập - CCCD" stylesheets="@../css/DangNhapCSS.css" />
+      <PasswordField id="matkhau" fx:id="matkhau" layoutX="278.0" layoutY="264.0" prefHeight="32.0" prefWidth="243.0" promptText="Mật khẩu" stylesheets="@../css/DangNhapCSS.css">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></PasswordField>
+      <Button id="nut_dangnhap" fx:id="nut_dangnhap" layoutX="346.0" layoutY="320.0" mnemonicParsing="false" onAction="#dangnhap" prefHeight="20.0" prefWidth="106.0" stylesheets="@../css/DangNhapCSS.css" text="Đăng nhập">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="quenmatkhau" layoutX="350.0" layoutY="370.0" onMouseClicked="#quenmatkhau" prefHeight="13.0" prefWidth="98.0" text="Quên mật khẩu?" textFill="#f20000">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

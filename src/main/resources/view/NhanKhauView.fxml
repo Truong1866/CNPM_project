@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="520.0" prefWidth="800.0" stylesheets="@../css/NhanKhauCSS.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.NhanKhauControl">
+   <children>
+      <TextField id="nhapTen" fx:id="nhapTen" layoutX="81.0" layoutY="14.0" prefHeight="26.0" prefWidth="574.0" promptText="Mã - Tên - CCCD" />
+      <Button id="timTen" fx:id="timTen" layoutX="655.0" layoutY="14.0" mnemonicParsing="false" onAction="#timTen" text="Tìm kiếm" />
+      <TableView id="bangDuLieu" fx:id="bangDuLieu" layoutX="8.0" layoutY="56.0" prefHeight="446.0" prefWidth="782.0">
+        <columns>
+          <TableColumn fx:id="maNhanKhau" prefWidth="113.19999694824219" styleClass="cotDuLieu" text="Mã nhân khẩu" />
+          <TableColumn fx:id="hoTen" minWidth="0.0" prefWidth="244.4000244140625" styleClass="cotDuLieu" text="Họ - Tên" />
+            <TableColumn fx:id="cccd" minWidth="0.0" prefWidth="175.19998168945312" styleClass="cotDuLieu" text="CCCD" />
+            <TableColumn fx:id="dienThoai" minWidth="0.0" prefWidth="163.5999755859375" styleClass="cotDuLieu" text="Điện thoại" />
+            <TableColumn fx:id="chiTiet" minWidth="0.0" prefWidth="88.60003662109375" styleClass="cotDuLieu" text="Chi tiết" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
