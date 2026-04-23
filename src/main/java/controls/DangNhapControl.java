@@ -22,6 +22,7 @@ public class DangNhapControl {
     @FXML
     private PasswordField matkhau;
 
+    @SuppressWarnings("unused")
     @FXML
     private Button nut_dangnhap;
 
@@ -35,7 +36,6 @@ public class DangNhapControl {
         if(svten_ma_cccd != null && svmatkhau != null){
             List<NguoiDung> nguoiDungs = NguoiDungService.timNguoiDung(svten_ma_cccd);
             for(NguoiDung nguoiDung: nguoiDungs){
-                check = false;
                 check = (nguoiDung.getMaNguoiDung().equals(svten_ma_cccd)) ||
                         (nguoiDung.getTenNguoiDung().equals(svten_ma_cccd)) ||
                         (nguoiDung.getCCCD().equals(svten_ma_cccd));
@@ -64,5 +64,19 @@ public class DangNhapControl {
             }
         }
         return new NguoiDung();
+    }
+
+    public static void logout(ActionEvent event) throws Exception {
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Bạn có chắc chắn muốn đăng xuất?", ButtonType.YES, ButtonType.NO);
+        confirm.setTitle("Xác nhận");
+        confirm.setHeaderText(null);
+        if(confirm.showAndWait().get() == ButtonType.YES) {
+            PhienNguoiDung.nguoiDung = null;
+            FXMLLoader load = new FXMLLoader(DangNhapControl.class.getResource("/view/DangNhapView.fxml"));
+            Parent login = load.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(login, 800, 600));
+            stage.show();
+        }
     }
 }

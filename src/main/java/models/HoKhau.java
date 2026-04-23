@@ -18,4 +18,8 @@ public class HoKhau {
         this.maHo = maHo;
         this.maCanHo = maCanHo;
     }
+    public String getMaHo() {
+        return this.maHo;
+    }
+
 }

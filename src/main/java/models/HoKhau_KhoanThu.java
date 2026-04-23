@@ -8,7 +8,19 @@ public class HoKhau_KhoanThu {
     private String ngayNop;
     private String hanNop;
     private String moTa;
+    private long tienThieu;
+    private String trangThaiChiTiet;
+    private long soTienThuc;
 
+    public String getTrangThaiChiTiet() {
+        return this.trangThaiChiTiet;
+    }
+    public void setTrangThaiChiTiet(String trangThaiChiTiet) {
+        this.trangThaiChiTiet = trangThaiChiTiet;
+    }
+    public void setSoTienThuc(long soTienThuc) {
+        this.soTienThuc = soTienThuc;
+    }
     public String getMaHo() {
         return maHo;
     }
@@ -36,6 +48,8 @@ public class HoKhau_KhoanThu {
     public String getMoTa() {
         return moTa;
     }
+
+    public long getTienThieu() { return this.tienThieu;}
 
     public HoKhau_KhoanThu(){}
 
