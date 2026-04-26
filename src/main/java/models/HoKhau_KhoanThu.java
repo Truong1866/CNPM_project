@@ -8,6 +8,7 @@ public class HoKhau_KhoanThu {
     private String ngayNop;
     private String hanNop;
     private String moTa;
+    private long tienCo;
     private long tienThieu;
     private String trangThaiChiTiet;
     private long soTienThuc;
@@ -50,6 +51,9 @@ public class HoKhau_KhoanThu {
     }
 
     public long getTienThieu() { return this.tienThieu;}
+    public long getSoTienThuc() { return this.soTienThuc;}
+    public long getTienCo() { return this.tienCo;}
+    public void setTienCo(long tienCo) { this.tienCo = tienCo;}
 
     public HoKhau_KhoanThu(){}
 
@@ -61,5 +65,19 @@ public class HoKhau_KhoanThu {
         this.ngayNop = ngayNop;
         this.hanNop = hanNop;
         this.moTa = moTa;
+    }
+
+    public HoKhau_KhoanThu(String maHo, String maKhoanThu, boolean trangThai, int soLuong, String ngayNop, String hanNop, String moTa, long soTienThuc, long tienCo, long tienThieu, String trangThaiChiTiet){
+        this.maHo = maHo;
+        this.maKhoanThu = maKhoanThu;
+        this.trangThai = trangThai;
+        this.soLuong = soLuong;
+        this.ngayNop = ngayNop;
+        this.hanNop = hanNop;
+        this.moTa = moTa;
+        this.soTienThuc = soTienThuc;
+        this.tienCo = tienCo;
+        this.tienThieu = tienThieu;
+        this.trangThaiChiTiet = trangThaiChiTiet;
     }
 }

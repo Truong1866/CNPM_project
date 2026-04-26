@@ -36,6 +36,22 @@ public class NguoiDung {
         this.matKhau = matKhau;
     }
 
+    public void setTenNguoiDung(String tenNguoiDung) {
+        this.tenNguoiDung = tenNguoiDung;
+    }
+
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
+    }
+
+    public void setDienThoai(String dienThoai) {
+        this.dienThoai = dienThoai;
+    }
+
+    public void setCCCD(String CCCD) {
+        this.CCCD = CCCD;
+    }
+
     public NguoiDung(){}
 
     public NguoiDung(String maNguoiDung, String tenNguoiDung, String matKhau, String vaiTro, String dienThoai, String CCCD){
