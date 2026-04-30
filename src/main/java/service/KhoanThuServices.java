@@ -1,5 +1,6 @@
 package service;
 
+import database.Database;
 import models.KhoanThu;
 
 import java.sql.Connection;
@@ -11,7 +12,7 @@ import java.util.List;
 public class KhoanThuServices {
     /// can cap nhat them kha nang thong bao loi khoan thu khong ton tai
     public static List<KhoanThu> timKhoanThu(String ma_ten) throws Exception{
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "SELECT * FROM khoanthu WHERE MaKhoanThu = ? OR TenKhoanThu = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, ma_ten);
@@ -39,7 +40,7 @@ public class KhoanThuServices {
     /// can cap nhat them kha nang thong bao loi khoan thu khong ton tai
     /// can cap nhat them kha nang thong bao loi khoan thu bat duoc co ho khau lien ket voi no
     public static void xoaKhoanThu(String maKhoanThu) throws Exception{
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "DELETE FROM khoanthu WHERE MaKhoanThu = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maKhoanThu);
@@ -56,7 +57,7 @@ public class KhoanThuServices {
         if(khoanThu.getTenKhoanThu() == null) throw new Exception("Ten khoan thu khong duoc trong");
         if(khoanThu.getDonGia() < 0) throw new Exception("Don gia khong duoc am");
 
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "INSERT INTO khoanthu value (?, ?, ?, ?, ?, ?)";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, khoanThu.getMaKhoanThu());
@@ -78,7 +79,7 @@ public class KhoanThuServices {
         if(khoanThu.getTenKhoanThu() == null) throw new Exception("Ten khoan thu khong duoc trong");
         if(khoanThu.getDonGia() < 0) throw new Exception("Don gia khong duoc am");
 
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "UPDATE khoanthu SET" +
                 " TenKhoanThu = ?" +
                 " ,BatBuoc = ?" +

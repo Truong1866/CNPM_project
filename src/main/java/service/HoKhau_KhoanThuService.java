@@ -1,5 +1,6 @@
 package service;
 
+import database.Database;
 import models.HoKhau_KhoanThu;
 
 import java.sql.Connection;
@@ -17,7 +18,7 @@ public class HoKhau_KhoanThuService {
 
     public static List<HoKhau_KhoanThu> timKhoanThu(String maHo) throws Exception{
         if (maHo == null) throw new Exception("Ma ho khau khong duoc trong");
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "SELECT * FROM hokhau_khoanthu WHERE MaHo = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maHo);
@@ -50,7 +51,7 @@ public class HoKhau_KhoanThuService {
 
     public static List<HoKhau_KhoanThu> timHoKhau(String maKhoanThu) throws Exception{
         if(maKhoanThu == null) throw new Exception("Ma khoan thu khong duoc trong");
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "SELECT * FROM hokhau_khoanthu WHERE MaKhoanThu = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maKhoanThu);
@@ -86,7 +87,7 @@ public class HoKhau_KhoanThuService {
         if(hoKhauKhoanThu.getMaKhoanThu() == null) throw new Exception("Ma khoan thu khong duoc trong");
         if(hoKhauKhoanThu.getSoLuong() <= 0) throw new Exception("So luong phai duong");
 
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "INSERT INTO hokhau_canho value (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, hoKhauKhoanThu.getMaHo());
@@ -111,7 +112,7 @@ public class HoKhau_KhoanThuService {
     public static void xoaHoKhau_KhoanThu(String maHo, String maKhoanTHu) throws Exception{
         if(maHo == null) throw new Exception("Ma ho khong duoc trong");
         if(maKhoanTHu == null) throw new Exception("Ma khoan thu khong duoc trong");
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "DELETE FROM hokhau_khoanthu WHERE MaHo = ? AND MaKhoanThu = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maHo);
@@ -133,7 +134,7 @@ public class HoKhau_KhoanThuService {
         if(hoKhauKhoanThu.getMaKhoanThu() == null) throw new Exception("Ma khoan thu khong duoc trong");
         if(hoKhauKhoanThu.getSoLuong() <= 0) throw new Exception("So luong phai duong");
 
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "UPDATE hokhau_khoanthu SET" +
                 " TrangThai = ?" +
                 " ,SoLuong = ?" +

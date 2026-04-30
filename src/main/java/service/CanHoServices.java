@@ -1,5 +1,6 @@
 package service;
 
+import database.Database;
 import models.CanHo;
 
 import java.sql.Connection;
@@ -11,7 +12,7 @@ import java.util.List;
 public class CanHoServices {
     /// can cap nhat them kha nang thong bao khong co can ho ton tai
     public static List<CanHo> timCanHo(String ma_so) throws Exception{
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "SELECT * FROM canho WHERE MaCanHo = ? OR SoPhong = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, ma_so);
@@ -41,7 +42,7 @@ public class CanHoServices {
         if(canHo.getSoPhong() == null) throw new Exception("So phong khong duoc trong");
         if(canHo.getDienTich() < 0) throw new Exception("Dien tich khong duoc am");
 
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "INSERT INTO canho value (?, ?, ?, ?)";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, canHo.getMaCanHo());
@@ -57,7 +58,7 @@ public class CanHoServices {
     /// can cap nhat them kha nang thong bao neu can ho khong ton tai
     /// can dam bao viec xoa can ho phai xoa ca ho khau va nhan khau o can ho truoc
     public static void xoaCanHo(String ma_so) throws Exception{
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "DELETE FROM canho WHERE MaCanHo = ? OR SoPhong = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, ma_so);
@@ -74,7 +75,7 @@ public class CanHoServices {
         if(canHo.getSoPhong() == null) throw new Exception("So phong khong duoc trong");
         if(canHo.getDienTich() < 0) throw new Exception("Dien tich khong duoc am");
 
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "UPDATE canho SET" +
                 " DienTich = ?" +
                 " ,MoTa = ?" +

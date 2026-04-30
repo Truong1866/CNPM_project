@@ -1,5 +1,6 @@
 package application;
 
+import database.DB_manager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,10 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+    @Override
+    public void init() throws Exception {
+        DB_manager.init();
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -19,5 +24,10 @@ public class Main extends Application {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void stop() throws Exception {
+        DB_manager.shutdown();
     }
 }

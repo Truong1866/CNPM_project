@@ -1,5 +1,6 @@
 package service;
 
+import database.Database;
 import models.NguoiDung;
 
 import java.sql.Connection;
@@ -11,7 +12,7 @@ import java.util.List;
 public class NguoiDungService {
     /// can cap nhat them kha nang thong bao khong co nguoi dung ton tai
     public static List<NguoiDung> timNguoiDung(String ma_ten_CCCD) throws Exception{
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "SELECT * FROM nguoidung WHERE TenNguoiDung = ? OR MaNguoiDung = ? OR CCCD = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, ma_ten_CCCD);
@@ -46,7 +47,7 @@ public class NguoiDungService {
         if(nguoiDung.getMatKhau() == null) throw new Exception("Mat khau khong duoc trong");
         if(nguoiDung.getCCCD() == null) throw new  Exception("CCCD khong duoc trong");
 
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "INSERT INTO nguoidung VALUE (?, ?, ?, ?, ?, ?)";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, nguoiDung.getMaNguoiDung());
@@ -63,7 +64,7 @@ public class NguoiDungService {
 
     /// can thong bao kha nang xoa nguoi dung khong ton tai
     public static void xoaNguoiDung(String maNguoiDung) throws Exception{
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "DELETE FROM nguoidung WHERE MaNguoiDung = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maNguoiDung);
@@ -80,7 +81,7 @@ public class NguoiDungService {
         if(nguoiDung.getMatKhau() == null) throw new Exception("Mat khau khong duoc trong");
         if(nguoiDung.getCCCD() == null) throw new Exception("CCCD khong duoc trong");
 
-        Connection conn = MySQL.connect();
+        Connection conn = Database.connect();
         String sql = "UPDATE nguoidung SET" +
                 " TenNguoiDung = ?" +
                 " ,MatKhau = ?" +
