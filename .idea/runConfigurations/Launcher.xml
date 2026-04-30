@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Launcher" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="application.Launcher" />
+    <module name="CNPM_project1" />
+    <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../ENV/openjfx-26_linux-x64_bin-sdk/javafx-sdk-26/lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
