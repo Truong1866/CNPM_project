@@ -1,7 +1,7 @@
 package service;
 
 import database.Database;
-import models.NguoiDung_HoKhau;
+import models.ResidentHouse;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class NguoiDung_HoKhauService {
 
-    public static NguoiDung_HoKhau timHoKhau(String maNguoiDung) throws Exception{
+    public static ResidentHouse timHoKhau(String maNguoiDung) throws Exception{
         if(maNguoiDung == null) throw new Exception("Ma nguoi dung khong duoc trong");
         Connection conn = Database.connect();
         String sql = "SELECT * FROM nguoidung_hokhau WHERE MaNguoiDung = ?";
@@ -22,12 +22,12 @@ public class NguoiDung_HoKhauService {
 
         pr.close();
         conn.close();
-        return new NguoiDung_HoKhau(rs.getString("MaNguoiDung"),
+        return new ResidentHouse(rs.getString("MaNguoiDung"),
                                     rs.getString("MaHo"),
                                     rs.getBoolean("ChuHo"));
     }
 
-    public static List<NguoiDung_HoKhau> timNguoiDung(String maHo) throws Exception{
+    public static List<ResidentHouse> timNguoiDung(String maHo) throws Exception{
         if(maHo == null) throw new Exception("Ma ho khau khong duoc trong");
         Connection conn = Database.connect();
         String sql = "SELECT * FROM nguoidung_hokhau WHERE MaHo = ?";
@@ -35,9 +35,9 @@ public class NguoiDung_HoKhauService {
         pr.setString(1, maHo);
         ResultSet rs = pr.executeQuery();
 
-        List<NguoiDung_HoKhau> list = new ArrayList<>();
+        List<ResidentHouse> list = new ArrayList<>();
         while (rs.next()){
-            NguoiDung_HoKhau nguoiDungHoKhau = new NguoiDung_HoKhau(
+            ResidentHouse nguoiDungHoKhau = new ResidentHouse(
                 rs.getString("MaNguoiDung"),
                 rs.getString("MaHo"),
                 rs.getBoolean("ChuHo")
@@ -50,7 +50,7 @@ public class NguoiDung_HoKhauService {
         return list;
     }
 
-    public static void themNguoiDung_HoKhau(NguoiDung_HoKhau nguoiDungHoKhau) throws Exception{
+    public static void themNguoiDung_HoKhau(ResidentHouse nguoiDungHoKhau) throws Exception{
         if(nguoiDungHoKhau.getMaNguoiDung() == null) throw new Exception("Ma nguoi dung khong duoc trong");
         if(nguoiDungHoKhau.getMaHo() == null) throw new Exception("Ma ho khau khong duoc trong");
 
@@ -81,7 +81,7 @@ public class NguoiDung_HoKhauService {
         conn.close();
     }
 
-    public static void suaNguoiDung_HoKhau(NguoiDung_HoKhau nguoiDungHoKhau) throws Exception{
+    public static void suaNguoiDung_HoKhau(ResidentHouse nguoiDungHoKhau) throws Exception{
         if(nguoiDungHoKhau.getMaNguoiDung() == null) throw new Exception("Ma nguoi dung khong duoc trong");
         if(nguoiDungHoKhau.getMaHo() == null) throw new Exception("Ma ho khau khong duoc trong");
 

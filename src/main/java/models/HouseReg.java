@@ -1,6 +1,10 @@
 package models;
 
-public class HoKhau {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "")
+public class HouseReg {
     private String maHo;
     private String maCanHo;
 
@@ -12,9 +16,9 @@ public class HoKhau {
         return maCanHo;
     }
 
-    public HoKhau(){}
+    public HouseReg(){}
 
-    public HoKhau(String maHo, String maCanHo){
+    public HouseReg(String maHo, String maCanHo){
         this.maHo = maHo;
         this.maCanHo = maCanHo;
     }

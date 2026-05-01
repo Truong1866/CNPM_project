@@ -8,7 +8,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import models.PhienNguoiDung;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +24,7 @@ public class TrangChuControl implements Initializable {
     private BorderPane borderPane;
 
     public void setThongTin(){
-        tenDangNhap.setText(PhienNguoiDung.nguoiDung.getTenNguoiDung());
+        tenDangNhap.setText(PhienNguoiDung.resident.getTenNguoiDung());
     }
 
     public void thongTinCaNhan(MouseEvent mouseEvent) {

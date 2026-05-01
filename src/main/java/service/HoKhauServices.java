@@ -1,7 +1,7 @@
 package service;
 
 import database.Database;
-import models.HoKhau;
+import models.HouseReg;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,20 +11,20 @@ import java.util.List;
 
 public class HoKhauServices {
     /// can cap nhap kha nag thong bao ho khau khong ton tai
-    public static List<HoKhau> timHoKhau(String maHo) throws Exception{
+    public static List<HouseReg> timHoKhau(String maHo) throws Exception{
         Connection conn = Database.connect();
         String sql = "SELECT * FROM hokhau WHERE maHo = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maHo);
         ResultSet rs = pr.executeQuery();
 
-        List<HoKhau> list = new ArrayList<>();
+        List<HouseReg> list = new ArrayList<>();
         while(rs.next()){
-            HoKhau hoKhau = new HoKhau(
+            HouseReg housereg = new HouseReg(
                 rs.getString("MaHo"),
                 rs.getString("MaCanHo")
             );
-            list.add(hoKhau);
+            list.add(housereg);
         }
         pr.close();
         conn.close();
@@ -47,15 +47,15 @@ public class HoKhauServices {
 
     /// can cap nhat kha nang thong bao loi ho khau da ton tai
     /// can cap nhat kha nang thong bao loi can ho khong trong (da co ho khau)
-    public static void themHoKhau(HoKhau hoKhau) throws Exception{
-        if(hoKhau.getHo() == null) throw new Exception("Ma ho khau khong duoc trong");
-        if(hoKhau.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
+    public static void themHoKhau(HouseReg housereg) throws Exception{
+        if(housereg.getHo() == null) throw new Exception("Ma ho khau khong duoc trong");
+        if(housereg.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
 
         Connection conn = Database.connect();
         String sql = "INSERT INTO hokhau value (?, ?)";
         PreparedStatement pr = conn.prepareStatement(sql);
-        pr.setString(1, hoKhau.getHo());
-        pr.setString(2, hoKhau.getMaCanHo());
+        pr.setString(1, housereg.getHo());
+        pr.setString(2, housereg.getMaCanHo());
         pr.executeUpdate();
 
         pr.close();
@@ -64,17 +64,17 @@ public class HoKhauServices {
 
     /// can cap nhat kha nang thong bao loi ho khau khong ton tai
     /// can cap nhat kha nang thong bao can ho khong trong (da co ho khau)
-    public static void suaHoKhau(HoKhau hoKhau) throws Exception{
-        if(hoKhau.getHo() == null) throw new Exception("Ma ho khau khong duoc trong");
-        if(hoKhau.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
+    public static void suaHoKhau(HouseReg housereg) throws Exception{
+        if(housereg.getHo() == null) throw new Exception("Ma ho khau khong duoc trong");
+        if(housereg.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
 
         Connection conn = Database.connect();
         String sql = "UPDATE hokhau SET" +
                 " MaCanHo = ?" +
                 " WHERE MaHo = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
-        pr.setString(1, hoKhau.getMaCanHo());
-        pr.setString(2, hoKhau.getHo());
+        pr.setString(1, housereg.getMaCanHo());
+        pr.setString(2, housereg.getHo());
         pr.executeUpdate();
 
         pr.close();

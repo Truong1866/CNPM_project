@@ -1,7 +1,7 @@
 package service;
 
 import database.Database;
-import models.HoKhau_KhoanThu;
+import models.HouseRecei;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ public class HoKhau_KhoanThuService {
     /// <param name="maHoKhau">ma ho khau</param>
     /// <return>danh sach cac khoan</return>
 
-    public static List<HoKhau_KhoanThu> timKhoanThu(String maHo) throws Exception{
+    public static List<HouseRecei> timKhoanThu(String maHo) throws Exception{
         if (maHo == null) throw new Exception("Ma ho khau khong duoc trong");
         Connection conn = Database.connect();
         String sql = "SELECT * FROM hokhau_khoanthu WHERE MaHo = ?";
@@ -24,9 +24,9 @@ public class HoKhau_KhoanThuService {
         pr.setString(1, maHo);
         ResultSet rs = pr.executeQuery();
 
-        List<HoKhau_KhoanThu> list = new ArrayList<>();
+        List<HouseRecei> list = new ArrayList<>();
         while(rs.next()){
-            HoKhau_KhoanThu hoKhauKhoanThu = new HoKhau_KhoanThu(
+            HouseRecei hoKhauKhoanThu = new HouseRecei(
                 rs.getString("MaHo"),
                 rs.getString("MaKhoanThu"),
                 rs.getBoolean("TrangThai"),
@@ -49,7 +49,7 @@ public class HoKhau_KhoanThuService {
     /// <param name="maKhoanThu">ma khoan thu</param>
     /// <return>danh sach cac ho</return>
 
-    public static List<HoKhau_KhoanThu> timHoKhau(String maKhoanThu) throws Exception{
+    public static List<HouseRecei> timHoKhau(String maKhoanThu) throws Exception{
         if(maKhoanThu == null) throw new Exception("Ma khoan thu khong duoc trong");
         Connection conn = Database.connect();
         String sql = "SELECT * FROM hokhau_khoanthu WHERE MaKhoanThu = ?";
@@ -57,9 +57,9 @@ public class HoKhau_KhoanThuService {
         pr.setString(1, maKhoanThu);
         ResultSet rs = pr.executeQuery();
 
-        List<HoKhau_KhoanThu> list = new ArrayList<>();
+        List<HouseRecei> list = new ArrayList<>();
         while(rs.next()){
-            HoKhau_KhoanThu hoKhauKhoanThu = new HoKhau_KhoanThu(
+            HouseRecei hoKhauKhoanThu = new HouseRecei(
                     rs.getString("MaHo"),
                     rs.getString("MaKhoanThu"),
                     rs.getBoolean("TrangThai"),
@@ -82,7 +82,7 @@ public class HoKhau_KhoanThuService {
     /// <param name="hoKhauKhoanThu">doi tuong quan he khoan thu va ho khau da co</param>
     /// <return></return>
 
-    public static void themHoKhau_KhoanThu(HoKhau_KhoanThu hoKhauKhoanThu) throws Exception{
+    public static void themHoKhau_KhoanThu(HouseRecei hoKhauKhoanThu) throws Exception{
         if(hoKhauKhoanThu.getMaHo() == null) throw new Exception("Ma ho khong duoc trong");
         if(hoKhauKhoanThu.getMaKhoanThu() == null) throw new Exception("Ma khoan thu khong duoc trong");
         if(hoKhauKhoanThu.getSoLuong() <= 0) throw new Exception("So luong phai duong");
@@ -129,7 +129,7 @@ public class HoKhau_KhoanThuService {
     /// <param name="maHo">ma ho khau</param>
     /// <param name="maKhoanThu">ma khoan thu </param>
     /// <return></return>
-    public static void suaHoKhau_KhoanThu(HoKhau_KhoanThu hoKhauKhoanThu) throws Exception{
+    public static void suaHoKhau_KhoanThu(HouseRecei hoKhauKhoanThu) throws Exception{
         if(hoKhauKhoanThu.getMaHo() == null) throw new Exception("Ma ho khong duoc trong");
         if(hoKhauKhoanThu.getMaKhoanThu() == null) throw new Exception("Ma khoan thu khong duoc trong");
         if(hoKhauKhoanThu.getSoLuong() <= 0) throw new Exception("So luong phai duong");

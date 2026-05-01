@@ -1,6 +1,6 @@
 package models;
 
-public class KhoanThu {
+public class Receivable {
     private String maKhoanThu;
     private String tenKhoanThu;
     private boolean batBuoc;
@@ -32,9 +32,9 @@ public class KhoanThu {
         return moTa;
     }
 
-    public KhoanThu(){}
+    public Receivable(){}
 
-    public KhoanThu(String maKhoanThu, String tenKhoanThu, boolean batBuoc, boolean coDinh, int donGia, String moTa){
+    public Receivable(String maKhoanThu, String tenKhoanThu, boolean batBuoc, boolean coDinh, int donGia, String moTa){
         this.maKhoanThu = maKhoanThu;
         this.tenKhoanThu = tenKhoanThu;
         this.batBuoc = batBuoc;

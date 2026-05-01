@@ -1,7 +1,7 @@
 package service;
 
 import database.Database;
-import models.CanHo;
+import models.Apartment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CanHoServices {
     /// can cap nhat them kha nang thong bao khong co can ho ton tai
-    public static List<CanHo> timCanHo(String ma_so) throws Exception{
+    public static List<Apartment> timCanHo(String ma_so) throws Exception{
         Connection conn = Database.connect();
         String sql = "SELECT * FROM canho WHERE MaCanHo = ? OR SoPhong = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
@@ -19,15 +19,15 @@ public class CanHoServices {
         pr.setString(2, ma_so);
         ResultSet rs = pr.executeQuery();
 
-        List<CanHo> list = new ArrayList<>();
+        List<Apartment> list = new ArrayList<>();
         while (rs.next()){
-            CanHo canHo = new CanHo(
+            Apartment apartment = new Apartment(
                 rs.getString("MaCanHo"),
                 rs.getString("SoPhong"),
                 rs.getInt("DienTich"),
                 rs.getString("MoTa")
             );
-            list.add(canHo);
+            list.add(apartment);
         }
         pr.close();
         conn.close();
@@ -37,18 +37,18 @@ public class CanHoServices {
 
     /// can cap nhat kha nang tao ma tu dong theo so phong
     /// can cap nhat them kha nang thong bao loi neu can ho da ton tai
-    public static void themCanHo(CanHo canHo) throws Exception{
-        if(canHo.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
-        if(canHo.getSoPhong() == null) throw new Exception("So phong khong duoc trong");
-        if(canHo.getDienTich() < 0) throw new Exception("Dien tich khong duoc am");
+    public static void themCanHo(Apartment apartment) throws Exception{
+        if(apartment.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
+        if(apartment.getSoPhong() == null) throw new Exception("So phong khong duoc trong");
+        if(apartment.getDienTich() < 0) throw new Exception("Dien tich khong duoc am");
 
         Connection conn = Database.connect();
         String sql = "INSERT INTO canho value (?, ?, ?, ?)";
         PreparedStatement pr = conn.prepareStatement(sql);
-        pr.setString(1, canHo.getMaCanHo());
-        pr.setString(2, canHo.getSoPhong());
-        pr.setInt(3, canHo.getDienTich());
-        pr.setString(4, canHo.getMoTa());
+        pr.setString(1, apartment.getMaCanHo());
+        pr.setString(2, apartment.getSoPhong());
+        pr.setInt(3, apartment.getDienTich());
+        pr.setString(4, apartment.getMoTa());
         pr.executeUpdate();
 
         pr.close();
@@ -70,10 +70,10 @@ public class CanHoServices {
     }
 
     /// can cap nhat them kha nang thong bao can ho khong ton tai
-    public static void suaCanHo(CanHo canHo) throws Exception{
-        if(canHo.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
-        if(canHo.getSoPhong() == null) throw new Exception("So phong khong duoc trong");
-        if(canHo.getDienTich() < 0) throw new Exception("Dien tich khong duoc am");
+    public static void suaCanHo(Apartment apartment) throws Exception{
+        if(apartment.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
+        if(apartment.getSoPhong() == null) throw new Exception("So phong khong duoc trong");
+        if(apartment.getDienTich() < 0) throw new Exception("Dien tich khong duoc am");
 
         Connection conn = Database.connect();
         String sql = "UPDATE canho SET" +
@@ -81,10 +81,10 @@ public class CanHoServices {
                 " ,MoTa = ?" +
                 " WHERE MaCanHo = ? AND SoPhong = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
-        pr.setInt(1, canHo.getDienTich());
-        pr.setString(2, canHo.getMoTa());
-        pr.setString(3, canHo.getMaCanHo());
-        pr.setString(4, canHo.getSoPhong());
+        pr.setInt(1, apartment.getDienTich());
+        pr.setString(2, apartment.getMoTa());
+        pr.setString(3, apartment.getMaCanHo());
+        pr.setString(4, apartment.getSoPhong());
         pr.executeUpdate();
 
         pr.close();

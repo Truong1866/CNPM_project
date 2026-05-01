@@ -11,10 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import models.NguoiDung;
+import models.Resident;
 import service.NguoiDungService;
-
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,29 +27,29 @@ public class NhanKhauControl implements Initializable {
     private Button timTen;
 
     @FXML
-    private TableView<NguoiDung> bangDuLieu;
+    private TableView<Resident> bangDuLieu;
 
     @FXML
-    private TableColumn<NguoiDung, String> maNhanKhau, hoTen, cccd, dienThoai;
+    private TableColumn<Resident, String> maNhanKhau, hoTen, cccd, dienThoai;
 
     @FXML
-    private TableColumn<NguoiDung, Void> chiTiet;
+    private TableColumn<Resident, Void> chiTiet;
 
 
     public void timTen(ActionEvent event) throws Exception {
         String ma_ten_CCCD = nhapTen.getText();
-        List<NguoiDung> nguoiDungs = NguoiDungService.timNguoiDung(ma_ten_CCCD);
-        ObservableList<NguoiDung> data = FXCollections.observableArrayList(nguoiDungs);
+        List<Resident> residents = NguoiDungService.timNguoiDung(ma_ten_CCCD);
+        ObservableList<Resident> data = FXCollections.observableArrayList(residents);
         bangDuLieu.setItems(data);
     }
 
-    private void xemChiTiet(NguoiDung nguoiDung) throws IOException {
+    private void xemChiTiet(Resident resident) throws IOException {
         FXMLLoader loader = new FXMLLoader(DangNhapControl.class.getResource("/view/ChiTietNhanKhauView.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Thong tin chi tiet nguoi dung: " + nguoiDung.getMaNguoiDung() + "-" + nguoiDung.getTenNguoiDung());
+        stage.setTitle("Thong tin chi tiet nguoi dung: " + resident.getMaNguoiDung() + "-" + resident.getTenNguoiDung());
         stage.setResizable(false);
         stage.show();
     }
@@ -69,7 +67,7 @@ public class NhanKhauControl implements Initializable {
 
                 chiTietButton.setOnAction(event -> {
                     try {
-                        NguoiDung data = getTableView().getItems().get(getIndex());
+                        Resident data = getTableView().getItems().get(getIndex());
                         xemChiTiet(data);
                     } catch (IOException e) {
                         e.printStackTrace();

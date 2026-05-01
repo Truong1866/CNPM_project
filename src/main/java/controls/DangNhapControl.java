@@ -9,8 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import models.NguoiDung;
-import models.PhienNguoiDung;
+import models.Resident;
 import service.NguoiDungService;
 
 import java.util.List;
@@ -28,25 +27,25 @@ public class DangNhapControl {
     public void quenmatkhau(MouseEvent mouseEvent) throws Exception{
     }
 
-    public NguoiDung dangnhap(ActionEvent event) throws Exception {
+    public Resident dangnhap(ActionEvent event) throws Exception {
         String svten_ma_cccd = ten_ma_cccd.getText();
         String svmatkhau = matkhau.getText();
         boolean check = false;
         if(svten_ma_cccd != null && svmatkhau != null){
-            List<NguoiDung> nguoiDungs = NguoiDungService.timNguoiDung(svten_ma_cccd);
-            for(NguoiDung nguoiDung: nguoiDungs){
+            List<Resident> residents = NguoiDungService.timNguoiDung(svten_ma_cccd);
+            for(Resident resident : residents){
                 check = false;
-                check = (nguoiDung.getMaNguoiDung().equals(svten_ma_cccd)) ||
-                        (nguoiDung.getTenNguoiDung().equals(svten_ma_cccd)) ||
-                        (nguoiDung.getCCCD().equals(svten_ma_cccd));
-                check = check && (nguoiDung.getMatKhau().equals(svmatkhau));
+                check = (resident.getMaNguoiDung().equals(svten_ma_cccd)) ||
+                        (resident.getTenNguoiDung().equals(svten_ma_cccd)) ||
+                        (resident.getCCCD().equals(svten_ma_cccd));
+                check = check && (resident.getMatKhau().equals(svmatkhau));
                 if(check){
-                    PhienNguoiDung.nguoiDung = nguoiDung;
+                    PhienNguoiDung.resident = resident;
                     break;
                 }
 
             }
-            if(PhienNguoiDung.nguoiDung != null){
+            if(PhienNguoiDung.resident != null){
                 FXMLLoader load = new FXMLLoader(getClass().getResource("/view/TrangChuView.fxml"));
                 Parent trangChu = load.load();
 
@@ -63,6 +62,6 @@ public class DangNhapControl {
                 alert.showAndWait();
             }
         }
-        return new NguoiDung();
+        return new Resident();
     }
 }

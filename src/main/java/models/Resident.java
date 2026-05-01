@@ -1,6 +1,6 @@
 package models;
 
-public class NguoiDung {
+public class Resident {
     private String tenNguoiDung;
     private String maNguoiDung;
     private String matKhau;
@@ -36,9 +36,9 @@ public class NguoiDung {
         this.matKhau = matKhau;
     }
 
-    public NguoiDung(){}
+    public Resident(){}
 
-    public NguoiDung(String maNguoiDung, String tenNguoiDung, String matKhau, String vaiTro, String dienThoai, String CCCD){
+    public Resident(String maNguoiDung, String tenNguoiDung, String matKhau, String vaiTro, String dienThoai, String CCCD){
         this.maNguoiDung = maNguoiDung;
         this.tenNguoiDung = tenNguoiDung;
         if(matKhau == null) matKhau = "12345678";
