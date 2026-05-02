@@ -1,50 +1,50 @@
 package models;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
+
+import java.time.LocalDate;
+import java.time.Instant;
+
+@Entity
+@Table(name = "Resident")
 public class Resident {
-    private String tenNguoiDung;
-    private String maNguoiDung;
-    private String matKhau;
-    private String vaiTro;
-    private String dienThoai;
-    private String CCCD;
+    @Id
+    @Column(name ="resident_id", unique = true, nullable = false, length = 20)
+    private String residentId;
 
-    public String getMaNguoiDung() {
-        return maNguoiDung;
-    }
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    public String getTenNguoiDung() {
-        return tenNguoiDung;
-    }
+    @Column(name = "birthday")
+    private LocalDate birthday;
 
-    public String getMatKhau() {
-        return matKhau;
-    }
+    @Column(name = "telephone", unique = true, length = 20)
+    private String telephone;
 
-    public String getVaiTro() {
-        return vaiTro;
-    }
+    @Generated(event = EventType.INSERT)
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private Instant createdAt;
 
-    public String getDienThoai() {
-        return dienThoai;
-    }
+    @Column(name ="delete_at")
+    private Instant deleteAt;
 
-    public String getCCCD() {
-        return CCCD;
-    }
+    public Resident() {}
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
+    public String getResidentId() {return residentId;}
+    public void setResidentId(String residentId) { this.residentId = residentId; }
 
-    public Resident(){}
+    public String getName() {return name;}
+    public void setName(String name) { this.name = name; }
 
-    public Resident(String maNguoiDung, String tenNguoiDung, String matKhau, String vaiTro, String dienThoai, String CCCD){
-        this.maNguoiDung = maNguoiDung;
-        this.tenNguoiDung = tenNguoiDung;
-        if(matKhau == null) matKhau = "12345678";
-        this.matKhau = matKhau;
-        this.vaiTro = vaiTro;
-        this.dienThoai = dienThoai;
-        this.CCCD = CCCD;
-    }
+    public LocalDate getBirthday() {return birthday;}
+    public void setBirthday(LocalDate birthday) { this.birthday = birthday; }
+
+    public String getTelephone() {return telephone;}
+    public void setTelephone(String telephone) { this.telephone = telephone; }
+
+    public Instant getCreatedAt() {return createdAt;}
+    public Instant getDeleteAt() {return deleteAt;}
+    public void setDeleteAt(Instant deleteAt) { this.deleteAt = deleteAt; }
 }

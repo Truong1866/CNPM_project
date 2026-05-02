@@ -1,46 +1,62 @@
 package models;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
+
+import java.time.Instant;
+
+@Entity
+@Table(name = "Receivable")
 public class Receivable {
-    private String maKhoanThu;
-    private String tenKhoanThu;
-    private boolean batBuoc;
-    private boolean coDinh;
-    private int donGia;
-    private String moTa;
+    @Id
+    @Column(name = "recei_id", nullable = false, unique = true)
+    private String receiId;
 
-    public String getMaKhoanThu() {
-        return maKhoanThu;
-    }
+    @Column(name = "recei_name", nullable = false)
+    private String receiName;
 
-    public String getTenKhoanThu() {
-        return tenKhoanThu;
-    }
+    @Column(name = "mandatory", nullable = false)
+    private boolean mandatory;
 
-    public boolean isBatBuoc() {
-        return batBuoc;
-    }
+    @Column(name = "fixed", nullable = false)
+    private boolean fixed;
 
-    public boolean isCoDinh() {
-        return coDinh;
-    }
+    @Column(name ="price", nullable = false)
+    private long price;
 
-    public int getDonGia() {
-        return donGia;
-    }
+    @Column(name = "description")
+    private String description;
 
-    public String getMoTa() {
-        return moTa;
-    }
+    @Generated(event = EventType.INSERT)
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private Instant createdAt;
 
-    public Receivable(){}
+    @Column(name = "delete_at")
+    private Instant deleteAt;
 
-    public Receivable(String maKhoanThu, String tenKhoanThu, boolean batBuoc, boolean coDinh, int donGia, String moTa){
-        this.maKhoanThu = maKhoanThu;
-        this.tenKhoanThu = tenKhoanThu;
-        this.batBuoc = batBuoc;
-        this.coDinh = coDinh;
-        this.donGia = donGia;
-        this.moTa = moTa;
-    }
+    public Receivable() {}
+
+    public String getReceiId() {return receiId;}
+    public void setReceiId(String receiId) {this.receiId = receiId;}
+
+    public String getReceiName() {return receiName;}
+    public void setReceiName(String receiName) {this.receiName = receiName;}
+
+    public boolean isMandatory() {return mandatory;}
+    public void setMandatory(boolean mandatory) {this.mandatory = mandatory;}
+
+    public boolean isFixed() {return fixed;}
+    public void setFixed(boolean fixed) {this.fixed = fixed;}
+
+    public long getPrice() {return price;}
+    public void setPrice(long price) {this.price = price;}
+
+    public String getDescription() {return description;}
+    public void setDescription(String description) {this.description = description;}
+
+    public Instant getCreatedAt() {return createdAt;}
+    public Instant getDeleteAt() {return deleteAt;}
+    public void setDeleteAt(Instant deleteAt) {this.deleteAt = deleteAt;}
 }
 

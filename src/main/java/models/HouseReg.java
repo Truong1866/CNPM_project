@@ -1,25 +1,39 @@
 package models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
+
+import java.time.Instant;
 
 @Entity
-@Table(name = "")
+@Table(name = "Housse_reg")
 public class HouseReg {
-    private String maHo;
-    private String maCanHo;
+    @Id
+    @Column(name = "house_id", unique = true, nullable = false, length = 20)
+    private String houseId;
 
-    public String getHo() {
-        return maHo;
-    }
+    @ManyToOne
+    @Column(name = "apart_id", nullable = false)
+    private Apartment apartment;
 
-    public String getMaCanHo() {
-        return maCanHo;
-    }
+    @Generated(event = EventType.INSERT)
+    @Column(name = "create_at",insertable = false, updatable = false)
+    private Instant createAt;
 
-    public HouseReg(){}
+    @Column(name = "delete_at")
+    private Instant deleteAt;
 
-    public HouseReg(String maHo, String maCanHo){
-        this.maHo = maHo;
-        this.maCanHo = maCanHo;
-    }
+    public HouseReg() {}
+
+    public String getHouseId() {return houseId;}
+    public void setHouseId(String houseId) {this.houseId = houseId;}
+
+    public Apartment getApartment() {return apartment;}
+    public void setApartment(Apartment apartment) {this.apartment = apartment;}
+
+    public Instant getCreateAt() {return createAt;}
+    public Instant getDeleteAt() {return deleteAt;}
+    public void setCreateAt(Instant createAt) {this.createAt = createAt;}
 }

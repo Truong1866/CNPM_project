@@ -1,6 +1,7 @@
 package models;
 
 import jakarta.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Table(name = "House_Recei")
@@ -21,10 +22,10 @@ public class HouseRecei {
     private long quantity;
 
     @Column(name = "pay_date")
-    private java.time.OffsetDateTime payDate;
+    private Instant payDate;
 
     @Column(name = "pay_deadline", nullable = false)
-    private java.time.OffsetDateTime payDeadline;
+    private Instant payDeadline;
 
     @Column(name = "description")
     private String description;
@@ -43,11 +44,11 @@ public class HouseRecei {
     public long getQuantity() {return quantity;}
     public void setQuantity(long quantity) {this.quantity = quantity;}
 
-    public java.time.OffsetDateTime getPayDate() {return payDate;}
-    public void setPayDate(java.time.OffsetDateTime payDate) {this.payDate = payDate;}
+    public Instant getPayDate() {return payDate;}
+    public void setPayDate(Instant payDate) {this.payDate = payDate;}
 
-    public java.time.OffsetDateTime getPayDeadline() {return payDeadline;}
-    public void setPayDeadline(java.time.OffsetDateTime payDeadline) {this.payDeadline = payDeadline;}
+    public Instant getPayDeadline() {return payDeadline;}
+    public void setPayDeadline(Instant payDeadline) {this.payDeadline = payDeadline;}
 
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}

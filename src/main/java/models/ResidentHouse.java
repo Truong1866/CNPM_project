@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Resident_House")
 public class ResidentHouse {
-    @ManytoOne
+    @ManyToOne
     @JoinColumn(name = "resident_id", unique = true, nullable = false)
     private Resident resident;
 

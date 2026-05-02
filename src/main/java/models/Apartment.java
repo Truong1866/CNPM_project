@@ -1,6 +1,7 @@
 package models;
 
 import jakarta.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Table(name = "Apartment")
@@ -22,7 +23,7 @@ public class Apartment {
     private String description;
 
     @Column(name = "delete_at")
-    private java.sql.Timestamp deleteAt;
+    private Instant deleteAt;
 
     public Apartment() {}
     public String getApartId() {return apartId;}
@@ -40,6 +41,6 @@ public class Apartment {
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
-    public java.sql.Timestamp getDeleteAt() {return deleteAt;}
-    public void setDeleteAt(java.sql.Timestamp deleteAt) {this.deleteAt = deleteAt;}
+    public Instant getDeleteAt() {return deleteAt;}
+    public void setDeleteAt(Instant deleteAt) {this.deleteAt = deleteAt;}
 }
