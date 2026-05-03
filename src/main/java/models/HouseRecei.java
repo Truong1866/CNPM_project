@@ -2,6 +2,7 @@ package models;
 
 import jakarta.persistence.*;
 import java.time.Instant;
+import java.util.Objects;
 
 @Entity
 @Table(name = "house_recei")
@@ -53,4 +54,22 @@ public class HouseRecei {
 
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HouseRecei that = (HouseRecei) o;
+
+        return Objects.equals(houseReg != null ? houseReg.getHouseId() : null,
+                that.houseReg != null ? that.houseReg.getHouseId() : null) &&
+                Objects.equals(receivable != null ? receivable.getReceiId() : null,
+                        that.receivable != null ? that.receivable.getReceiId() : null);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(houseReg != null ? houseReg.getHouseId() : null,
+                receivable != null ? receivable.getReceiId() : null);
+    }
 }

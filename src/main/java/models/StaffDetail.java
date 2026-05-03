@@ -6,6 +6,7 @@ import org.hibernate.generator.EventType;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "staff_detail")
@@ -43,4 +44,17 @@ public class StaffDetail {
     public void setAddress(String address) {this.address = address;}
 
     public Instant getCreatedAt() {return createdAt;}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StaffDetail that = (StaffDetail) o;
+        return Objects.equals(staff != null ? staff.getStaffId() : null,
+                that.staff != null ? that.staff.getStaffId() : null);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(staff != null ? staff.getStaffId() : null);
+    }
 }

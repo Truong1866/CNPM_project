@@ -2,6 +2,8 @@ package models;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "resident_house")
 public class ResidentHouse {
@@ -27,4 +29,24 @@ public class ResidentHouse {
 
     public boolean isMaster() {return isMaster;}
     public void setIsMaster(boolean isMaster) {this.isMaster = isMaster;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResidentHouse that = (ResidentHouse) o;
+
+        // So sánh ID của các object thay vì so sánh cả object
+        return Objects.equals(resident != null ? resident.getResidentId() : null,
+                that.resident != null ? that.resident.getResidentId() : null) &&
+                Objects.equals(houseReg != null ? houseReg.getHouseId() : null,
+                        that.houseReg != null ? that.houseReg.getHouseId() : null);
+    }
+
+    @Override
+    public int hashCode() {
+        // Chỉ hash dựa trên ID của đối tượng
+        return Objects.hash(resident != null ? resident.getResidentId() : null,
+                houseReg != null ? houseReg.getHouseId() : null);
+    }
 }
