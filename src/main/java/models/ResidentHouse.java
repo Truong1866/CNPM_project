@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "Resident_House")
 public class ResidentHouse {
     @ManyToOne
+    @Id
     @JoinColumn(name = "resident_id", unique = true, nullable = false)
     private Resident resident;
 

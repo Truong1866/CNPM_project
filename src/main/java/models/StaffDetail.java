@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Table(name = "staff_detail")
 public class StaffDetail {
     @OneToOne
+    @Id
     @JoinColumn(name = "staff_id", referencedColumnName = "staff_id", unique = true)
     private Staff staff;
 

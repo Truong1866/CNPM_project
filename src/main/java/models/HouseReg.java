@@ -8,18 +8,18 @@ import org.hibernate.generator.EventType;
 import java.time.Instant;
 
 @Entity
-@Table(name = "Housse_reg")
+@Table(name = "House_reg")
 public class HouseReg {
     @Id
     @Column(name = "house_id", unique = true, nullable = false, length = 20)
     private String houseId;
 
     @ManyToOne
-    @Column(name = "apart_id", nullable = false)
+    @JoinColumn(name = "apart_id", nullable = false)
     private Apartment apartment;
 
     @Generated(event = EventType.INSERT)
-    @Column(name = "create_at",insertable = false, updatable = false)
+    @Column(name = "created_at",insertable = false, updatable = false)
     private Instant createAt;
 
     @Column(name = "delete_at")

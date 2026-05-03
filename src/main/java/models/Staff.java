@@ -20,10 +20,10 @@ public class Staff {
     private String role;
 
     @Generated(event = EventType.INSERT)
-    @Column(name = "crreated_at", insertable = false, updatable = false)
+    @Column(name = "created_at", insertable = false, updatable = false)
     private Instant createdAt;
 
-    @Column(name = "deleteAt")
+    @Column(name = "delete_at")
     private Instant deleteAt;
 
     public Staff() {}

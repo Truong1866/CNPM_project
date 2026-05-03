@@ -8,6 +8,7 @@ import java.time.Instant;
 public class HouseRecei {
 
     @ManyToOne
+    @Id
     @JoinColumn(name = "house_id", nullable = false)
     private HouseReg houseReg;
 
