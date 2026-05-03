@@ -16,16 +16,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        try{
-            Parent dangNhap = FXMLLoader.load(getClass().getResource("/view/DangNhapView.fxml"));
-            Scene scene = new Scene(dangNhap,800,600);
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/DangNhapView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
     }
-
     @Override
     public void stop() throws Exception {
         DB_manager.shutdown();
