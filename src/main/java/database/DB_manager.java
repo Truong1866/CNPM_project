@@ -2,9 +2,12 @@ package database;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DB_manager {
     private static SessionFactory factory;
+    private static final Logger logger =  LoggerFactory.getLogger(DB_manager.class);
     public static void init() {
         if(factory == null){
             try{
@@ -16,10 +19,9 @@ public class DB_manager {
                 config.setProperty("hibernate.connection.password", dotenv.get("DB_PASSWORD"));
 
                 factory = config.buildSessionFactory();
-                System.out.println("✅ Đã kết nối Supabase thành công!");
+                logger.info("Successfully connected to database.");
             }catch(Exception e){
-                System.err.println("❌ Lỗi khởi tạo Database!");
-                e.printStackTrace();
+                logger.error("Cannot connect to database : {}",e.getMessage(),e);
             }
         }
     }
