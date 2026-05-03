@@ -6,13 +6,13 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.show_sql">true</property>
-        <mapping class="com.yourpackage.Staff_detail"/>
-        <mapping class="com.yourpackage.Staff"/>
-        <mapping class="com.yourpackage.Resident"/>
-        <mapping class="com.yourpackage.House_reg"/>
-        <mapping class="com.yourpackage.Appartment"/>
-        <mapping class="com.yourpackage.Receivable"/>
-        <mapping class="com.yourpackage.House_Recei"/>
-        <mapping class="com.yourpackage.House_master"/>
+        <mapping class="models.StaffDetail"/>
+        <mapping class="models.Staff"/>
+        <mapping class="models.Resident"/>
+        <mapping class="models.HouseReg"/>
+        <mapping class="models.Apartment"/>
+        <mapping class="models.Receivable"/>
+        <mapping class="models.HouseRecei"/>
+        <mapping class="models.ResidentHouse"/>
     </session-factory>
 </hibernate-configuration>
