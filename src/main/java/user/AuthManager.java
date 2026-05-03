@@ -18,8 +18,12 @@ public class AuthManager {
         return curentUser != null;
     }
 
-    public static boolean hasRole (String role){
+    public static boolean hasAnyRole(String... roles){
         if(curentUser == null) return false;
-        return curentUser.getRole().equals(role);
+        if(curentUser.getRole().equals("ADMIN")) return true;
+        for (String role : roles){
+            if(curentUser.getRole().equals(role)) return true;
+        }
+        return false;
     }
 }
