@@ -8,7 +8,7 @@ import org.hibernate.generator.EventType;
 import java.time.Instant;
 
 @Entity
-@Table(name = "House_reg")
+@Table(name = "house_reg")
 public class HouseReg {
     @Id
     @Column(name = "house_id", unique = true, nullable = false, length = 20)

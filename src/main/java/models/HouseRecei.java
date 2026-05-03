@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "House_Recei")
+@Table(name = "house_recei")
 public class HouseRecei {
 
     @ManyToOne

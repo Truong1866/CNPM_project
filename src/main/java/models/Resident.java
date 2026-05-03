@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.Instant;
 
 @Entity
-@Table(name = "Resident")
+@Table(name = "resident")
 public class Resident {
     @Id
     @Column(name ="resident_id", unique = true, nullable = false, length = 20)

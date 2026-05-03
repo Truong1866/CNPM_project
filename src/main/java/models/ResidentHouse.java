@@ -3,7 +3,7 @@ package models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Resident_House")
+@Table(name = "resident_house")
 public class ResidentHouse {
     @ManyToOne
     @Id

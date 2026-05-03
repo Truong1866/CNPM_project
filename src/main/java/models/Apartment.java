@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "Apartment")
+@Table(name = "apartment")
 public class Apartment {
     @Id
     @Column(name = "apart_id", nullable = false, unique = true, length = 20)

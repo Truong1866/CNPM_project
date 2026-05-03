@@ -7,7 +7,7 @@ import org.hibernate.generator.EventType;
 import java.time.Instant;
 
 @Entity
-@Table(name = "Receivable")
+@Table(name = "receivable")
 public class Receivable {
     @Id
     @Column(name = "recei_id", nullable = false, unique = true)
