@@ -1,29 +1,40 @@
 package user;
 
 public class AuthManager {
-    private static SessionUser curentUser = null;
+    private static SessionUser currentUser = null;
     public static void login(SessionUser user) {
-        curentUser = user;
+        currentUser = user;
     }
 
     public static void logout() {
-        curentUser = null;
+        currentUser = null;
     }
 
     public static SessionUser getCurrentUser() {
-        return curentUser;
+        return currentUser;
     }
 
     public static boolean isLoggedIn() {
-        return curentUser != null;
+        return currentUser != null;
     }
 
-    public static boolean hasAnyRole(String... roles){
-        if(curentUser == null) return false;
-        if(curentUser.getRole().equals("ADMIN")) return true;
-        for (String role : roles){
-            if(curentUser.getRole().equals(role)) return true;
-        }
-        return false;
+    public static boolean hasManagerRole(){
+        if(currentUser.getRole().equals("ADMIN")){return true;}
+        return currentUser.getRole().contains("MANAGER");
     }
+
+    public static boolean hasAdminRole(){
+        return currentUser.getRole().equals("ADMIN");
+    }
+
+    public static boolean hasResidentRole(){
+        if(currentUser.getRole().equals("ADMIN")){return true;}
+        return currentUser.getRole().contains("RESIDENT");
+    }
+
+    public static boolean hasFinanceRole(){
+        if(currentUser.getRole().equals("ADMIN")){return true;}
+        return currentUser.getRole().contains("FINANCE");
+    }
+
 }

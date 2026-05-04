@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import repository.StaffRepo;
 import service.StaffServices;
 
-public class DangNhapController {
+public class LoginController {
 
     private final StaffServices staffServices;
 
@@ -19,7 +19,7 @@ public class DangNhapController {
     @FXML private Button loginButton;
     @FXML private Label noticeLabel;
 
-    public DangNhapController() {
+    public LoginController() {
         StaffRepo staffRepo = new StaffRepo();
         this.staffServices = new StaffServices(staffRepo);
     }
@@ -36,7 +36,7 @@ public class DangNhapController {
         String username = userField.getText();
         String password = passwordField.getText();
         if(staffServices.loginServices(username, password)){
-            FXMLLoader loader = new FXMLLoader(DangNhapController.class.getResource("/view/TrangChuView.fxml"));
+            FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/view/HomeView.fxml"));
             Parent root =  (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) loginButton.getScene().getWindow();

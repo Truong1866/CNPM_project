@@ -15,7 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/DangNhapView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/LoginView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 600);
             stage.setScene(scene);
             stage.show();

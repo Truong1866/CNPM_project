@@ -60,3 +60,75 @@
 2026-05-04 00:21:25 [JavaFX-Launcher] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 2026-05-04 00:21:25 [JavaFX-Launcher] INFO  database.DB_manager - Successfully connected to database.
 2026-05-04 00:21:56 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 17:33:54 [JavaFX-Launcher] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-05-04 17:33:54 [JavaFX-Launcher] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-04 17:33:54 [JavaFX-Launcher] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2026-05-04 17:33:54 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+2026-05-04 17:33:54 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 17:33:54 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+2026-05-04 17:33:54 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2026-05-04 17:33:54 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2026-05-04 17:33:56 [JavaFX-Launcher] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-04 17:33:57 [JavaFX-Launcher] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-04 17:33:57 [JavaFX-Launcher] INFO  database.DB_manager - Successfully connected to database.
+2026-05-04 17:34:09 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:15:14 [JavaFX-Launcher] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-05-04 21:15:14 [JavaFX-Launcher] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-04 21:15:14 [JavaFX-Launcher] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2026-05-04 21:15:14 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+2026-05-04 21:15:14 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:15:14 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+2026-05-04 21:15:14 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2026-05-04 21:15:14 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2026-05-04 21:15:15 [JavaFX-Launcher] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-04 21:15:17 [JavaFX-Launcher] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-04 21:15:17 [JavaFX-Launcher] INFO  database.DB_manager - Successfully connected to database.
+2026-05-04 21:15:34 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:16:45 [JavaFX-Launcher] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-05-04 21:16:45 [JavaFX-Launcher] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-04 21:16:45 [JavaFX-Launcher] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2026-05-04 21:16:45 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+2026-05-04 21:16:45 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:16:45 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+2026-05-04 21:16:45 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2026-05-04 21:16:45 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2026-05-04 21:16:46 [JavaFX-Launcher] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-04 21:16:47 [JavaFX-Launcher] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-04 21:16:47 [JavaFX-Launcher] INFO  database.DB_manager - Successfully connected to database.
+2026-05-04 21:17:02 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:18:00 [JavaFX-Launcher] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-05-04 21:18:00 [JavaFX-Launcher] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-04 21:18:01 [JavaFX-Launcher] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2026-05-04 21:18:01 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+2026-05-04 21:18:01 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:18:01 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+2026-05-04 21:18:01 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2026-05-04 21:18:01 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2026-05-04 21:18:02 [JavaFX-Launcher] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-04 21:18:03 [JavaFX-Launcher] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-04 21:18:03 [JavaFX-Launcher] INFO  database.DB_manager - Successfully connected to database.
+2026-05-04 21:18:17 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:20:08 [JavaFX-Launcher] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-05-04 21:20:08 [JavaFX-Launcher] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-04 21:20:08 [JavaFX-Launcher] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2026-05-04 21:20:08 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+2026-05-04 21:20:08 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:20:08 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+2026-05-04 21:20:08 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2026-05-04 21:20:08 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2026-05-04 21:20:10 [JavaFX-Launcher] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-04 21:20:10 [JavaFX-Launcher] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-04 21:20:10 [JavaFX-Launcher] INFO  database.DB_manager - Successfully connected to database.
+2026-05-04 21:20:32 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:21:21 [JavaFX-Launcher] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-05-04 21:21:21 [JavaFX-Launcher] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-05-04 21:21:21 [JavaFX-Launcher] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2026-05-04 21:21:21 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+2026-05-04 21:21:21 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
+2026-05-04 21:21:21 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+2026-05-04 21:21:21 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2026-05-04 21:21:21 [JavaFX-Launcher] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2026-05-04 21:21:22 [JavaFX-Launcher] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-04 21:21:23 [JavaFX-Launcher] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-04 21:21:23 [JavaFX-Launcher] INFO  database.DB_manager - Successfully connected to database.
+2026-05-04 21:21:41 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:postgresql://db.hsgecwlpsqiqyvieuayf.supabase.co:5432/postgres?user=postgres&password=@CNPM2026.2-5]
