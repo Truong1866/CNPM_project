@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import repository.StaffRepo;
 import service.StaffServices;
 
-public class LoginController {
+public class LoginController extends BaseController {
 
     private final StaffServices staffServices;
 
@@ -36,12 +36,7 @@ public class LoginController {
         String username = userField.getText();
         String password = passwordField.getText();
         if(staffServices.loginServices(username, password)){
-            FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/view/HomeView.fxml"));
-            Parent root =  (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+            switchScene(event,"Home");
         }
         else{
             this.noticeLabel.setText("Đăng nhập không thành công");
