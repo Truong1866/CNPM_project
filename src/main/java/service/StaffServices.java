@@ -7,6 +7,8 @@ import user.SessionUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.CompletableFuture;
+
 public class StaffServices {
     private final StaffRepo staffRepo;
     private static final Logger logger = LoggerFactory.getLogger(StaffServices.class);
@@ -25,26 +27,22 @@ public class StaffServices {
         return staffRepo.findByStaffId(staffId);
     }
 
-    public boolean loginServices(String staffId, String password) throws Exception {
-        if (staffId == null) {
-            return false;
-        }
-        if (password == null) {
-            return false;
-        }
-        try {
-            Staff user = findByStaffId(staffId);
-            if (user == null) {
+    public CompletableFuture<Boolean> loginServices(String staffId, String password) throws Exception {
+        return CompletableFuture.supplyAsync(() -> {
+            if (staffId == null) {return false;}
+            if (password == null) {return false;}
+            try {
+                Staff user = findByStaffId(staffId);
+                if (user == null) {return false;}
+                if (user.getPassword().equals(password)) {
+                    SessionUser sessionUser = new SessionUser(user.getStaffId(), user.getPassword(), user.getRole());
+                    AuthManager.login(sessionUser);
+                }
+                return true;
+            } catch (Exception e) {
+                logger.error("Lỗi khi thực hiện đăng nhập: {}", e.getMessage(), e);
                 return false;
             }
-            if (user.getPassword().equals(password)) {
-                SessionUser sessionUser = new SessionUser(user.getStaffId(), user.getPassword(), user.getRole());
-                AuthManager.login(sessionUser);
-            }
-            return true;
-        } catch (Exception e) {
-            logger.error("Lỗi khi thực hiện đăng nhập: {}", e.getMessage(), e);
-            return false;
-        }
+        });
     }
 }

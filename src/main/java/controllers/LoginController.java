@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,11 +36,12 @@ public class LoginController extends BaseController {
     private void loginButtonAction(ActionEvent event) throws Exception {
         String username = userField.getText();
         String password = passwordField.getText();
-        if(staffServices.loginServices(username, password)){
-            switchScene(event,"Home");
-        }
-        else{
-            this.noticeLabel.setText("Đăng nhập không thành công");
-        }
+        staffServices.loginServices(username, password).thenAccept(isSuccess -> {
+            if (isSuccess) {
+                switchScene(event, "Home");
+            } else {
+                Platform.runLater(() -> this.noticeLabel.setText("Đăng nhập không thành công"));
+            }
+        });
     }
 }

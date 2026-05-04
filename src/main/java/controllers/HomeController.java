@@ -52,7 +52,7 @@ public class HomeController extends BaseController {
     private void logout(ActionEvent event) throws IOException {
         if(showConfirmation("Đăng xuất", "Bạn có muốn đăng xuất không ?")){
             AuthManager.logout();
-            switchScene(event,"Home");
+            switchScene(event,"Login");
         }
     }
 }
