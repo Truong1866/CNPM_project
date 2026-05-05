@@ -5,6 +5,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import user.AuthManager;
+import user.SessionUser;
 
 
 public class Main extends Application {
@@ -15,10 +17,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/LoginView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-            stage.setScene(scene);
-            stage.show();
+        /*SessionUser user = new SessionUser("00001", "000001", "ADMIN");
+        AuthManager.login(user);*/
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/LoginView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setScene(scene);
+        stage.show();
     }
     @Override
     public void stop() throws Exception {

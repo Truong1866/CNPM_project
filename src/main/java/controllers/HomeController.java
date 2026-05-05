@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import user.AuthManager;
 
 import java.io.IOException;
-import java.util.Optional;
 
 public class HomeController extends BaseController {
     @FXML private Label staffId;
@@ -50,9 +49,16 @@ public class HomeController extends BaseController {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
-        if(showConfirmation("Đăng xuất", "Bạn có muốn đăng xuất không ?")){
-            AuthManager.logout();
-            switchScene(event,"Login");
+        try{
+            if(showConfirmation("Đăng xuất", "Bạn có muốn đăng xuất không ?")){
+                AuthManager.logout();
+                logger.info("logout successful");
+                switchScene(event,"Login");
+            }else{
+                logger.info("User not logout");
+            }
+        }catch(Exception e){
+            logger.error("logout failed; {}", e.getMessage());
         }
     }
 }
