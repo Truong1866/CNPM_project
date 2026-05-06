@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ResidentController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane layoutX="465.0" layoutY="118.0" prefHeight="200.0" prefWidth="200.0" />
-         </children>
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ecf1f5" height="900.0" layoutX="110.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="1300.0" />
+         <StackPane layoutX="140.0" layoutY="248.0" prefHeight="700.0" prefWidth="1240.0" />
+         <Button layoutX="850.0" layoutY="175.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Tìm kiếm">
+            <font>
+               <Font name="Inter Regular" size="15.0" />
+            </font>
+         </Button>
+         <Button layoutX="1010.0" layoutY="175.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Thêm">
+            <font>
+               <Font name="Inter Regular" size="15.0" />
+            </font>
+         </Button>
+         <Button graphicTextGap="0.0" layoutX="1330.0" layoutY="170.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
+            <font>
+               <Font name="Inter Regular" size="15.0" />
+            </font>
+            <graphic>
+               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../image/refeshicons.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button layoutX="1170.0" layoutY="175.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Tải lại">
+            <font>
+               <Font name="Inter Regular" size="15.0" />
+            </font>
+         </Button>
+         <TextField id="infofield" layoutX="240.0" layoutY="175.0" prefHeight="40.0" prefWidth="600.0" promptText="Nhập thông tin" stylesheets="@../css/Resident.css">
+            <font>
+               <Font name="Inter Regular" size="15.0" />
+            </font>
+         </TextField>
+         <Label layoutX="150.0" layoutY="180.0" text="Tìm kiếm">
+            <font>
+               <Font name="Inter Regular" size="20.0" />
+            </font>
+         </Label>
+         <Button layoutX="110.0" layoutY="60.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Button" />
+         <Button layoutX="310.0" layoutY="60.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Button" />
+         <Button layoutX="510.0" layoutY="60.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Button" />
       </AnchorPane>
    </center>
    <left>
