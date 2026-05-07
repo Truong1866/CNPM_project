@@ -17,9 +17,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        /*SessionUser user = new SessionUser("00001", "000001", "ADMIN");
-        AuthManager.login(user);*/
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/LoginView.fxml"));
+        SessionUser user = new SessionUser("00001", "000001", "ADMIN");
+        AuthManager.login(user);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/ResidentView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setScene(scene);
         stage.show();

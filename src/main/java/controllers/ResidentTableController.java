@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import models.Resident;
@@ -17,11 +14,7 @@ import repository.ResidentRepo;
 import services.ResidentServices;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ResidentTableController {
     private static final Logger logger  = LoggerFactory.getLogger(ResidentTableController.class);
@@ -77,35 +70,35 @@ public class ResidentTableController {
         logger.info("Opening details of resident: {}", resident.getName());
     }
 
+    private void showErrorAlert(String content){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Lỗi");
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
     public void findResident(String info){
         if(info.isEmpty()){
             myTable.setItems(masterData);
         }
-        String infoLowerCase = info.toLowerCase();
-        boolean containNumber = infoLowerCase.matches(",*\\d.*");
-        Pattern datePattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
-        Matcher dateMatcher = datePattern.matcher(infoLowerCase);
-        if(dateMatcher.find()){
-            String extractedDate = dateMatcher.group();
-            logger.info("Chuỗi tìm thấy: {}", extractedDate);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            try {
-                LocalDate localDate = LocalDate.parse(extractedDate, formatter);
-                logger.info("Convert date complete: {}", localDate);
-                List<Resident> result = residentServices.findByDate(localDate);
-                ObservableList<Resident> items = FXCollections.observableArrayList(result);
-                myTable.setItems(items);
-            }catch (DateTimeParseException e) {
-                logger.error("Cannot convert to form of local date: {}", e.getMessage(), e);
-            }
-        } else if (containNumber) {
-            List<Resident> result = residentServices.findByNumber(info);
-            ObservableList<Resident> items = FXCollections.observableArrayList(result);
-            myTable.setItems(items);
-        } else{
-            List<Resident> result = residentServices.findByName(info);
-            ObservableList<Resident> items = FXCollections.observableArrayList(result);
-            myTable.setItems(items);
+        List<Resident> residents = residentServices.findByContainInfo(info);
+        ObservableList<Resident> items = FXCollections.observableArrayList(residents);
+        myTable.setItems(items);
+    }
+
+    public void addResident(Resident resident){
+        if(!residentServices.addResident(resident)){
+            this.showErrorAlert("Không thể thêm cư dân !");
+        }else{
+            masterData.add(resident);
+        }
+    }
+
+    public void deleteResident(Resident resident){
+        if(!residentServices.deleteResident(resident)){
+            this.showErrorAlert("Không thể xóa cư dân!");
+        }else{
+            masterData.remove(resident);
         }
     }
 }

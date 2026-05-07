@@ -7,7 +7,11 @@ import repository.ResidentRepo;
 import user.AuthManager;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ResidentServices {
     private final ResidentRepo residentRepo;
@@ -26,15 +30,61 @@ public class ResidentServices {
         return null;
     }
 
-    public List<Resident> findByDate(LocalDate date) {
-        return residentRepo.findByDate(date);
+    private LocalDate convertStringToLocalDate(String date){
+        Pattern datePattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
+        Matcher dateMatcher = datePattern.matcher(date);
+        if(dateMatcher.find()){
+            String extractedDate = dateMatcher.group();
+            logger.info("Found a localDate: {}", extractedDate);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            try {
+                LocalDate localDate = LocalDate.parse(extractedDate, formatter);
+                logger.info("Convert date complete: {}", localDate);
+                return localDate;
+            }catch (DateTimeParseException e) {
+                logger.error("Cannot convert to form of local date: {}", e.getMessage(), e);
+            }
+        }
+        return null;
     }
 
-    public List<Resident> findByName(String name) {
-        return residentRepo.findWithName(name);
+    public List<Resident> findByContainInfo(String info){
+        String infoLowerCase = info.toLowerCase();
+        boolean isOnlyNumber = infoLowerCase.matches("^[0-9]+$");
+        boolean isOnlyLetter =  infoLowerCase.matches("^\\p{L}+$");
+        LocalDate localDate = convertStringToLocalDate(infoLowerCase);
+        if(localDate != null){
+            return residentRepo.findByDate(localDate);
+        } else if (isOnlyNumber) {
+            return residentRepo.findWithNumber(infoLowerCase);
+        } else if (isOnlyLetter) {
+            return residentRepo.findWithName(infoLowerCase);
+        }
+        return null;
     }
 
-    public List<Resident> findByNumber(String number) {
-        return residentRepo.findWithNumber(number);
+    public boolean addResident(Resident resident){
+        if(residentRepo.findById(resident.getResidentId()) != null){
+            try{
+                residentRepo.addResident(resident);
+                return true;
+            }catch (Exception e){
+                logger.error(e.getMessage());
+                return false;
+            }
+        }return false;
+    }
+
+    public boolean deleteResident(Resident resident){
+        if(residentRepo.findById(resident.getResidentId()) != null){
+            try{
+                residentRepo.deleteResident(resident);
+                return true;
+            }catch (Exception e){
+                logger.error(e.getMessage());
+                return false;
+            }
+        }
+        return false;
     }
 }
