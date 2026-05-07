@@ -12,7 +12,7 @@ public class NguoiDung_HoKhauService {
 
     public static NguoiDung_HoKhau timHoKhau(String maNguoiDung) throws Exception{
         if(maNguoiDung == null) throw new Exception("Ma nguoi dung khong duoc trong");
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "SELECT * FROM nguoidung_hokhau WHERE MaNguoiDung = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maNguoiDung);
@@ -28,7 +28,7 @@ public class NguoiDung_HoKhauService {
 
     public static List<NguoiDung_HoKhau> timNguoiDung(String maHo) throws Exception{
         if(maHo == null) throw new Exception("Ma ho khau khong duoc trong");
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "SELECT * FROM nguoidung_hokhau WHERE MaHo = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maHo);
@@ -53,7 +53,7 @@ public class NguoiDung_HoKhauService {
         if(nguoiDungHoKhau.getMaNguoiDung() == null) throw new Exception("Ma nguoi dung khong duoc trong");
         if(nguoiDungHoKhau.getMaHo() == null) throw new Exception("Ma ho khau khong duoc trong");
 
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "INSERT INTO nguoidung_hokhau value (?, ?, ?)";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, nguoiDungHoKhau.getMaNguoiDung());
@@ -69,7 +69,7 @@ public class NguoiDung_HoKhauService {
         if(maNguoiDung == null) throw new Exception("Ma nguoi dung khong duoc trong");
         if(maHo == null) throw new Exception("Ma ho khau khong duoc trong");
 
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "DELETE FROM nguoidung_hokhau WHERE MaNguoiDung = ? AND MaHo = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maNguoiDung);
@@ -84,7 +84,7 @@ public class NguoiDung_HoKhauService {
         if(nguoiDungHoKhau.getMaNguoiDung() == null) throw new Exception("Ma nguoi dung khong duoc trong");
         if(nguoiDungHoKhau.getMaHo() == null) throw new Exception("Ma ho khau khong duoc trong");
 
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "UPDATE nguoidung_hokhau SET" +
                 " ChuHo = ?" +
                 " WHERE MaNguoiDung = ? AND MaHo = ?";

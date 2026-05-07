@@ -11,7 +11,7 @@ public class HoKhauServices {
 
     public static List<HoKhau> timHoKhau(String maHo) throws Exception {
         String sql = "SELECT * FROM hokhau WHERE maHo = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, maHo);
@@ -31,7 +31,7 @@ public class HoKhauServices {
 
     public static void xoaHoKhau(String maHo) throws Exception {
         String sql = "DELETE FROM hokhau WHERE maHo = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, maHo);
@@ -44,7 +44,7 @@ public class HoKhauServices {
         if (hoKhau.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
 
         String sql = "INSERT INTO hokhau value (?, ?)";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, hoKhau.getHo());
@@ -58,7 +58,7 @@ public class HoKhauServices {
         if (hoKhau.getMaCanHo() == null) throw new Exception("Ma can ho khong duoc trong");
 
         String sql = "UPDATE hokhau SET MaCanHo = ? WHERE MaHo = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, hoKhau.getMaCanHo());

@@ -11,7 +11,7 @@ import java.util.List;
 public class PhiBienLaiService {
 
     public static List<PhiBienLai> timPhiBienLai(String maPhiBienLai) throws Exception {
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "SELECT * FROM phiBienLai WHERE MaPhiBienLai = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maPhiBienLai);
@@ -40,7 +40,7 @@ public class PhiBienLaiService {
         if(phi.getSoTienThuc() <= 0) throw new Exception("Số tiền phải > 0");
         if(phi.getNgayThu().isAfter(LocalDate.now())) throw new Exception("Ngày thu không được trong tương lai");
 
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "INSERT INTO phiBienLai (MaPhiBienLai, MaHo, MaKhoanThu, SoTienThuc, NgayThu, TrangThaiThu, NguoiThu, GhiChu) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, phi.getMaPhiBienLai());
@@ -57,7 +57,7 @@ public class PhiBienLaiService {
     }
 
     public static List<PhiBienLai> timPhiBienLaiTheoHo(String maHo) throws Exception {
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "SELECT * FROM phiBienLai WHERE MaHo = ? AND TrangThaiThu = 'Đã thu'";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maHo);
@@ -83,7 +83,7 @@ public class PhiBienLaiService {
     }
 
     public static List<PhiBienLai> timPhiBienLaiTheoKhoangThoiGian(LocalDate batDau, LocalDate ketThuc) throws Exception {
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "SELECT * FROM phiBienLai WHERE NgayThu BETWEEN ? AND ? AND TrangThaiThu = 'Đã thu'";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setDate(1, java.sql.Date.valueOf(batDau));
@@ -110,7 +110,7 @@ public class PhiBienLaiService {
     }
 
     public static void xoaPhiBienLai(String maPhiBienLai) throws Exception {
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "UPDATE phiBienLai SET TrangThaiThu = 'Hủy' WHERE MaPhiBienLai = ?";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setString(1, maPhiBienLai);
@@ -120,7 +120,7 @@ public class PhiBienLaiService {
     }
 
     public static long getTongTienThuTrongThang(int thang, int nam) throws Exception {
-        Connection conn = MySQL.connect();
+        Connection conn = SupabaseDatabase.connect();
         String sql = "SELECT COALESCE(SUM(SoTienThuc), 0) AS total FROM phiBienLai WHERE MONTH(NgayThu) = ? AND YEAR(NgayThu) = ? AND TrangThaiThu = 'Đã thu'";
         PreparedStatement pr = conn.prepareStatement(sql);
         pr.setInt(1, thang);

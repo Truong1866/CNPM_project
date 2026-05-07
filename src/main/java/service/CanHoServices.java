@@ -12,7 +12,7 @@ public class CanHoServices {
     /// can cap nhat them kha nang thong bao khong co can ho ton tai
     public static List<CanHo> timCanHo(String ma_so) throws Exception{
         String sql = "SELECT * FROM canho WHERE MaCanHo = ? OR SoPhong = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setString(1, ma_so);
             pr.setString(2, ma_so);
@@ -40,7 +40,7 @@ public class CanHoServices {
         if(canHo.getDienTich() < 0) throw new Exception("Dien tich khong duoc am");
 
         String sql = "INSERT INTO canho VALUES (?, ?, ?, ?)";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setString(1, canHo.getMaCanHo());
             pr.setString(2, canHo.getSoPhong());
@@ -54,7 +54,7 @@ public class CanHoServices {
     /// can dam bao viec xoa can ho phai xoa ca ho khau va nhan khau o can ho truoc
     public static void xoaCanHo(String ma_so) throws Exception{
         String sql = "DELETE FROM canho WHERE MaCanHo = ? OR SoPhong = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setString(1, ma_so);
             pr.setString(2, ma_so);
@@ -69,7 +69,7 @@ public class CanHoServices {
         if(canHo.getDienTich() < 0) throw new Exception("Dien tich khong duoc am");
 
         String sql = "UPDATE canho SET DienTich = ?, MoTa = ? WHERE MaCanHo = ? AND SoPhong = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setInt(1, canHo.getDienTich());
             pr.setString(2, canHo.getMoTa());

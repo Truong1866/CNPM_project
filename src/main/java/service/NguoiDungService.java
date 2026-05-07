@@ -13,7 +13,7 @@ public class NguoiDungService {
 
     public static List<NguoiDung> timNguoiDung(String ma_ten_CCCD) throws Exception {
         String sql = "SELECT * FROM nguoidung WHERE TenNguoiDung = ? OR MaNguoiDung = ? OR CCCD = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, ma_ten_CCCD);
@@ -45,7 +45,7 @@ public class NguoiDungService {
         if (nguoiDung.getDienThoai() != null && !ValidationUtil.isValidPhone(nguoiDung.getDienThoai())) throw new Exception("Dien thoai khong hop le");
 
         String sql = "INSERT INTO nguoidung VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, nguoiDung.getMaNguoiDung());
@@ -60,7 +60,7 @@ public class NguoiDungService {
 
     public static void xoaNguoiDung(String maNguoiDung) throws Exception {
         String sql = "DELETE FROM nguoidung WHERE MaNguoiDung = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, maNguoiDung);
@@ -76,7 +76,7 @@ public class NguoiDungService {
         if (nguoiDung.getDienThoai() != null && !ValidationUtil.isValidPhone(nguoiDung.getDienThoai())) throw new Exception("Dien thoai khong hop le");
 
         String sql = "UPDATE nguoidung SET TenNguoiDung = ?, MatKhau = ?, VaiTro = ?, DienThoai = ?, CCCD = ? WHERE MaNguoiDung = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, nguoiDung.getTenNguoiDung());

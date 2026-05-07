@@ -41,4 +41,4 @@ build/
 ### Mac OS ###
 .DS_Store
 
-database_schema.sql
+database_scema.sql

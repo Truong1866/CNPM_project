@@ -11,7 +11,7 @@ public class KhoanThuServices {
 
     public static List<KhoanThu> timKhoanThu(String ma_ten) throws Exception {
         String sql = "SELECT * FROM khoanthu WHERE MaKhoanThu = ? OR TenKhoanThu = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, ma_ten);
@@ -36,7 +36,7 @@ public class KhoanThuServices {
 
     public static void xoaKhoanThu(String maKhoanThu) throws Exception {
         String sql = "DELETE FROM khoanthu WHERE MaKhoanThu = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, maKhoanThu);
@@ -50,7 +50,7 @@ public class KhoanThuServices {
         if (khoanThu.getDonGia() < 0) throw new Exception("Don gia khong duoc am");
 
         String sql = "INSERT INTO khoanthu value (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, khoanThu.getMaKhoanThu());
@@ -69,7 +69,7 @@ public class KhoanThuServices {
         if (khoanThu.getDonGia() < 0) throw new Exception("Don gia khong duoc am");
 
         String sql = "UPDATE khoanthu SET TenKhoanThu = ?, BatBuoc = ?, CoDinh = ?, DonGia = ?, MoTa = ? WHERE MaKhoanThu = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setString(1, khoanThu.getTenKhoanThu());

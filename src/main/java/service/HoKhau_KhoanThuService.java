@@ -18,7 +18,7 @@ public class HoKhau_KhoanThuService {
     public static List<HoKhau_KhoanThu> timKhoanThu(String maHo) throws Exception{
         if (maHo == null) throw new Exception("Ma ho khau khong duoc trong");
         String sql = "SELECT * FROM hokhau_khoanthu WHERE MaHo = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setString(1, maHo);
             try (ResultSet rs = pr.executeQuery()) {
@@ -53,7 +53,7 @@ public class HoKhau_KhoanThuService {
     public static List<HoKhau_KhoanThu> timHoKhau(String maKhoanThu) throws Exception{
         if(maKhoanThu == null) throw new Exception("Ma khoan thu khong duoc trong");
         String sql = "SELECT * FROM hokhau_khoanthu WHERE MaKhoanThu = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setString(1, maKhoanThu);
             try (ResultSet rs = pr.executeQuery()) {
@@ -91,7 +91,7 @@ public class HoKhau_KhoanThuService {
         if(hoKhauKhoanThu.getSoLuong() <= 0) throw new Exception("So luong phai duong");
 
         String sql = "INSERT INTO hokhau_khoanthu VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setString(1, hoKhauKhoanThu.getMaHo());
             pr.setString(2, hoKhauKhoanThu.getMaKhoanThu());
@@ -118,7 +118,7 @@ public class HoKhau_KhoanThuService {
         if(maHo == null) throw new Exception("Ma ho khong duoc trong");
         if(maKhoanTHu == null) throw new Exception("Ma khoan thu khong duoc trong");
         String sql = "DELETE FROM hokhau_khoanthu WHERE MaHo = ? AND MaKhoanThu = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setString(1, maHo);
             pr.setString(2, maKhoanTHu);
@@ -138,7 +138,7 @@ public class HoKhau_KhoanThuService {
         if(hoKhauKhoanThu.getSoLuong() <= 0) throw new Exception("So luong phai duong");
 
         String sql = "UPDATE hokhau_khoanthu SET TrangThai = ?, SoLuong = ?, NgayNop = ?, HanNop = ?, MoTa = ?, SoTienThuc = ?, TienCo = ?, TienThieu = ?, TrangThaiChiTiet = ? WHERE MaHo = ? AND MaKhoanThu = ?";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
             pr.setBoolean(1, hoKhauKhoanThu.isTrangThai());
             pr.setInt(2, hoKhauKhoanThu.getSoLuong());

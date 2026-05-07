@@ -12,7 +12,7 @@ public class BaoCaoThongKeService {
 
     public static List<BaoCaoThongKe> layThongKeTheoKhoan() throws Exception {
         String sql = "SELECT * FROM v_tongKeThongKe";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql);
              ResultSet rs = pr.executeQuery()) {
 
@@ -35,7 +35,7 @@ public class BaoCaoThongKeService {
 
     public static long layTongDoanh() throws Exception {
         String sql = "SELECT COALESCE(SUM(SoTienThuc), 0) AS total FROM phiBienLai WHERE TrangThaiThu = 'Đã thu'";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql);
              ResultSet rs = pr.executeQuery()) {
 
@@ -52,7 +52,7 @@ public class BaoCaoThongKeService {
                      "JOIN khoanthu kt ON hk.MaKhoanThu = kt.MaKhoanThu " +
                      "JOIN hokhau h ON hk.MaHo = h.MaHo " +
                      "JOIN canho c ON h.MaCanHo = c.MaCanHo";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql);
              ResultSet rs = pr.executeQuery()) {
 
@@ -65,7 +65,7 @@ public class BaoCaoThongKeService {
 
     public static List<HoKhau_KhoanThu> layDSHoQuaHan(int soNgayQuaHan) throws Exception {
         String sql = "SELECT * FROM hokhau_khoanthu WHERE HanNop < DATE_SUB(NOW(), INTERVAL ? DAY) AND TrangThaiChiTiet != 'Nộp đủ'";
-        try (Connection conn = MySQL.connect();
+        try (Connection conn = SupabaseDatabase.connect();
              PreparedStatement pr = conn.prepareStatement(sql)) {
 
             pr.setInt(1, soNgayQuaHan);
