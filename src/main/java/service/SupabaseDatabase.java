@@ -10,17 +10,7 @@ public class SupabaseDatabase {
     }
 
     public static Connection connect() throws Exception{
-        // PostgreSQL/Supabase connection
-        String type = "postgresql";
-        String host = System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost";
-        String port = System.getenv("DB_PORT") != null ? System.getenv("DB_PORT") : "5432";
-        String name = System.getenv("DB_NAME") != null ? System.getenv("DB_NAME") : "quan_ly_chung_cu";
-        String user = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "postgres";
-        String password = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "";
-        
-        // Supabase: jdbc:postgresql://host:port/database?sslmode=require
-        String url = "jdbc:" + type + "://" + host + ":" + port + "/" + name + "?sslmode=require";
-        return connect(url, user, password);
+        return connect(doten.get(DB_URL), doten.get(DB_USER), doten.get(DB_PASSWORD);
     }
 }
 
