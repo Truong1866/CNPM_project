@@ -35,3 +35,7 @@ build/
 .DS_Store
 
 database_schema.sql
+
+.env
+logs
+out
