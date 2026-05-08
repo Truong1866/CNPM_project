@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="myTable" prefHeight="750.0" prefWidth="1660.0"
+           xmlns="http://javafx.com/javafx/25"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controllers.ResidentTableController">
+   <columns>
+      <TableColumn fx:id="idCol"     prefWidth="280.0" text="CCCD / Mã cư dân" />
+      <TableColumn fx:id="nameCol"   prefWidth="600.0" text="Họ và tên" />
+      <TableColumn fx:id="birthCol"  prefWidth="250.0" text="Ngày sinh" />
+      <TableColumn fx:id="teleCol"   prefWidth="250.0" text="Số điện thoại" />
+      <TableColumn fx:id="actionCol" prefWidth="280.0" text="Chi tiết" />
+   </columns>
+</TableView>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="1080.0" prefWidth="1920.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.StaffManagementController">
+   <left>
+      <fx:include fx:id="navbar" source="NavbarView.fxml" />
+   </left>
+   <center>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#ecf1f5"
+                    height="900.0" layoutX="110.0" layoutY="100.0"
+                    stroke="#d0d7de" strokeType="INSIDE" width="1700.0" />
+
+         <Label layoutX="130.0" layoutY="115.0" text="Quản lý nhân sự">
+            <font><Font name="Inter Bold" size="28.0" /></font>
+         </Label>
+
+         <!-- Toolbar -->
+         <Label layoutX="130.0" layoutY="178.0" text="Tìm kiếm:">
+            <font><Font name="Inter Regular" size="18.0" /></font>
+         </Label>
+         <TextField fx:id="searchField" layoutX="240.0" layoutY="173.0"
+                    prefHeight="40.0" prefWidth="500.0"
+                    promptText="Mã nhân viên / Tên" />
+
+         <Label layoutX="755.0" layoutY="178.0" text="Role:">
+            <font><Font name="Inter Regular" size="18.0" /></font>
+         </Label>
+         <ComboBox fx:id="roleFilter" layoutX="805.0" layoutY="173.0"
+                   prefWidth="200.0" prefHeight="40.0"
+                   promptText="Tất cả" />
+
+         <Button layoutX="1015.0" layoutY="173.0" mnemonicParsing="false"
+                 onAction="#handleSearch" prefHeight="40.0" prefWidth="130.0"
+                 text="Tìm kiếm" />
+         <Button layoutX="1155.0" layoutY="173.0" mnemonicParsing="false"
+                 onAction="#handleReload" prefHeight="40.0" prefWidth="100.0"
+                 text="Tải lại" />
+         <Button layoutX="1265.0" layoutY="173.0" mnemonicParsing="false"
+                 onAction="#handleAdd" prefHeight="40.0" prefWidth="130.0"
+                 text="➕ Thêm mới"
+                 style="-fx-background-color:#2196F3;-fx-text-fill:white;" />
+
+         <!-- Table -->
+         <TableView fx:id="staffTable" layoutX="130.0" layoutY="230.0"
+                    prefHeight="750.0" prefWidth="1660.0">
+            <columns>
+               <TableColumn fx:id="colId"       prefWidth="250.0" text="Mã nhân viên" />
+               <TableColumn fx:id="colName"     prefWidth="450.0" text="Họ và tên" />
+               <TableColumn fx:id="colRole"     prefWidth="350.0" text="Vai trò" />
+               <TableColumn fx:id="colCreated"  prefWidth="300.0" text="Ngày tạo" />
+               <TableColumn fx:id="colAction"   prefWidth="310.0" text="Thao tác" />
+            </columns>
+         </TableView>
+      </AnchorPane>
+   </center>
+</BorderPane>
