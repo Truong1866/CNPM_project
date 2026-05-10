@@ -64,7 +64,7 @@ public class ResidentServices {
     }
 
     public boolean addResident(Resident resident){
-        if(residentRepo.findById(resident.getResidentId()) != null){
+        if(residentRepo.findById(resident.getResidentId()) == null){
             try{
                 residentRepo.addResident(resident);
                 return true;
