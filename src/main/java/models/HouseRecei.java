@@ -8,14 +8,8 @@ import java.util.Objects;
 @Table(name = "house_recei")
 public class HouseRecei {
 
-    @ManyToOne
-    @Id
-    @JoinColumn(name = "house_id", nullable = false)
-    private HouseReg houseReg;
-
-    @ManyToOne
-    @JoinColumn(name = "recei_id", nullable = false)
-    private Receivable receivable;
+    @EmbeddedId
+    private HouseReceiId id;
 
     @Column(name = "status", nullable = false)
     private boolean status;
@@ -34,11 +28,24 @@ public class HouseRecei {
 
     public HouseRecei() {}
 
-    public HouseReg getHouseReg() {return houseReg;}
-    public void setHouseReg(HouseReg houseReg) {this.houseReg = houseReg;}
+    public HouseReceiId getId() {return id;}
+    public void setId(HouseReceiId id) {this.id = id;}
 
-    public Receivable getReceivable() {return receivable;}
-    public void setReceivable(Receivable receivable) {this.receivable = receivable;}
+    public HouseReg getHouseReg() {
+        return id != null ? id.getHouseReg() : null;
+    }
+    public void setHouseReg(HouseReg houseReg) {
+        if (id == null) id = new HouseReceiId();
+        id.setHouseReg(houseReg);
+    }
+
+    public Receivable getReceivable() {
+        return id != null ? id.getReceivable() : null;
+    }
+    public void setReceivable(Receivable receivable) {
+        if (id == null) id = new HouseReceiId();
+        id.setReceivable(receivable);
+    }
 
     public boolean isStatus() {return status;}
     public void setStatus(boolean status) {this.status = status;}
@@ -60,16 +67,11 @@ public class HouseRecei {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HouseRecei that = (HouseRecei) o;
-
-        return Objects.equals(houseReg != null ? houseReg.getHouseId() : null,
-                that.houseReg != null ? that.houseReg.getHouseId() : null) &&
-                Objects.equals(receivable != null ? receivable.getReceiId() : null,
-                        that.receivable != null ? that.receivable.getReceiId() : null);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(houseReg != null ? houseReg.getHouseId() : null,
-                receivable != null ? receivable.getReceiId() : null);
+        return Objects.hash(id);
     }
 }
