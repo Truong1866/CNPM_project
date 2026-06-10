@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="520.0"
+<AnchorPane prefHeight="560.0" prefWidth="520.0"
             xmlns="http://javafx.com/javafx/25"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controllers.StaffFormController">
@@ -31,18 +31,21 @@
    <Label layoutX="20.0"  layoutY="225.0" text="Họ và tên *"><font><Font size="15"/></font></Label>
    <TextField fx:id="nameField" layoutX="210.0" layoutY="220.0" prefWidth="290.0" promptText="Bắt buộc" />
 
-   <Label layoutX="20.0"  layoutY="275.0" text="Ngày sinh"><font><Font size="15"/></font></Label>
-   <DatePicker fx:id="birthdayPicker" layoutX="210.0" layoutY="270.0" prefWidth="290.0" />
+   <Label layoutX="20.0"  layoutY="275.0" text="Email *"><font><Font size="15"/></font></Label>
+   <TextField fx:id="emailField" layoutX="210.0" layoutY="270.0" prefWidth="290.0" promptText="example@email.com" />
 
-   <Label layoutX="20.0"  layoutY="325.0" text="Địa chỉ"><font><Font size="15"/></font></Label>
-   <TextField fx:id="addressField" layoutX="210.0" layoutY="320.0" prefWidth="290.0" />
+   <Label layoutX="20.0"  layoutY="325.0" text="Ngày sinh"><font><Font size="15"/></font></Label>
+   <DatePicker fx:id="birthdayPicker" layoutX="210.0" layoutY="320.0" prefWidth="290.0" />
 
-   <Label fx:id="errorLabel" layoutX="20.0" layoutY="370.0"
+   <Label layoutX="20.0"  layoutY="375.0" text="Địa chỉ"><font><Font size="15"/></font></Label>
+   <TextField fx:id="addressField" layoutX="210.0" layoutY="370.0" prefWidth="290.0" />
+
+   <Label fx:id="errorLabel" layoutX="20.0" layoutY="420.0"
           style="-fx-text-fill:#e53935;" text="" wrapText="true" prefWidth="480.0">
       <font><Font size="13"/></font>
    </Label>
 
-   <HBox layoutX="20.0" layoutY="440.0" spacing="15.0">
+   <HBox layoutX="20.0" layoutY="500.0" spacing="15.0">
       <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSave"
               prefWidth="120.0" prefHeight="38.0" text="Lưu"
               style="-fx-background-color:#2196F3;-fx-text-fill:white;-fx-font-size:14;" />

@@ -44,7 +44,7 @@ public class NavbarController{
     public void initialize(){
         residentButton.setDisable(!AuthManager.hasResidentRole());
         financeButton.setDisable(!AuthManager.hasFinanceRole());
-        staffManagerButton.setDisable(!AuthManager.hasAdminRole());
+        staffManagerButton.setDisable(!AuthManager.hasStaffManagerRole());
         animateSidebarMin();
         navbar.setOnMouseEntered(event -> {
             animateSidebarMax();

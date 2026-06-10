@@ -30,37 +30,52 @@ public class ResidentServices {
         return null;
     }
 
-    private LocalDate convertStringToLocalDate(String date){
-        Pattern datePattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
-        Matcher dateMatcher = datePattern.matcher(date);
-        if(dateMatcher.find()){
-            String extractedDate = dateMatcher.group();
-            logger.info("Found a localDate: {}", extractedDate);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private LocalDate convertStringToLocalDate(String date) {
+        List<DateTimeFormatter> formatters = List.of(
+                DateTimeFormatter.ofPattern("dd/MM/yyyy"),
+                DateTimeFormatter.ofPattern("d/M/yyyy"),
+                DateTimeFormatter.ofPattern("dd-MM-yyyy"),
+                DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        );
+
+        // Tìm chuỗi khớp pattern ngày tháng trong input
+        Pattern datePattern = Pattern.compile(
+                "\\d{1,4}[/\\-]\\d{1,2}[/\\-]\\d{2,4}"
+        );
+        Matcher matcher = datePattern.matcher(date.trim());
+        if (!matcher.find()) return null;
+
+        String extracted = matcher.group();
+        for (DateTimeFormatter formatter : formatters) {
             try {
-                LocalDate localDate = LocalDate.parse(extractedDate, formatter);
-                logger.info("Convert date complete: {}", localDate);
-                return localDate;
-            }catch (DateTimeParseException e) {
-                logger.error("Cannot convert to form of local date: {}", e.getMessage(), e);
-            }
+                return LocalDate.parse(extracted, formatter);
+            } catch (DateTimeParseException ignored) {}
         }
+
+        logger.warn("Không thể parse ngày: {}", extracted);
         return null;
     }
 
-    public List<Resident> findByContainInfo(String info){
-        String infoLowerCase = info.toLowerCase();
-        boolean isOnlyNumber = infoLowerCase.matches("^[0-9]+$");
-        boolean isOnlyLetter =  infoLowerCase.matches("^\\p{L}+$");
-        LocalDate localDate = convertStringToLocalDate(infoLowerCase);
-        if(localDate != null){
-            return residentRepo.findByDate(localDate);
-        } else if (isOnlyNumber) {
-            return residentRepo.findWithNumber(infoLowerCase);
-        } else if (isOnlyLetter) {
-            return residentRepo.findWithName(infoLowerCase);
+    public List<Resident> findByContainInfo(String info) {
+        if (info == null || info.isBlank()) {
+            return residentRepo.findAll();
         }
-        return null;
+
+        String trimmed = info.trim();
+
+        // Thử parse ngày tháng trước
+        LocalDate localDate = convertStringToLocalDate(trimmed);
+        if (localDate != null) {
+            return residentRepo.findByDate(localDate);
+        }
+
+        // Chuỗi chỉ gồm chữ số → tìm theo CCCD hoặc SĐT
+        if (trimmed.matches("^[0-9]+$")) {
+            return residentRepo.findWithNumber(trimmed);
+        }
+
+        // Còn lại (chỉ chữ, hỗn hợp, có dấu cách...) → tìm theo tên
+        return residentRepo.findWithName(trimmed);
     }
 
     public boolean addResident(Resident resident){
