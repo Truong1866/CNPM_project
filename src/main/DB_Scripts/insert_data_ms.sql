@@ -3,7 +3,7 @@
 -- Chạy script này sau khi đã tạo xong bảng và Trigger/FK
 -- ============================================================
 
-USE [BlueMoon]; -- Hãy thay đổi tên Database nếu bạn dùng tên khác
+USE CNPM; -- Hãy thay đổi tên Database nếu bạn dùng tên khác
 GO
 
 -- ----------------------------------------------------------------
@@ -120,7 +120,7 @@ GO
 -- ----------------------------------------------------------------
 -- 7. TẠO HÓA ĐƠN THU TIỀN CHO CÁC HỘ (House_Recei)
 -- ----------------------------------------------------------------
-DECLARE @deadline DATETIMEOFFSET = SYSDATETIMEOFFSET() + 15; -- Hạn chót sau 15 ngày
+DECLARE @deadline DATETIMEOFFSET = DATEADD(DAY, 15,SYSDATETIMEOFFSET()); -- Hạn chót sau 15 ngày
 DECLARE @payDate  DATETIMEOFFSET = SYSDATETIMEOFFSET();      -- Ngày thanh toán
 
 -- TẠO HÓA ĐƠN TIỀN ĐIỆN (Giả sử số lượng số điện dùng là 120 số)

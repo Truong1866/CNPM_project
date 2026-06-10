@@ -2,6 +2,8 @@
 --  BLUEMOON APARTMENT MANAGEMENT — MS SQL Server Schema
 --  Target: Local SQL Server (LOCAL)
 -- ============================================================
+CREATE DATABASE CNPM
+USE CNPM
 
 -- ----------------------------------------------------------------
 -- 1. TABLE CREATION
