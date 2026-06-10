@@ -6,8 +6,32 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import models.Resident;
+import navigation.Navigable;
+import navigation.NavigationEntry;
 
-public class ResidentController extends BaseController {
+import java.util.Map;
+
+/**
+ * Controller trang Quản lý cư dân.
+ *
+ * <p>Implement {@link Navigable} để khôi phục trạng thái tìm kiếm khi
+ * người dùng back() từ màn hình chi tiết về đây.
+ *
+ * <h3>Cách lưu trạng thái tìm kiếm khi navigate đi</h3>
+ * Khi mở chi tiết cư dân, Controller truyền searchQuery vào entry:
+ * <pre>
+ *   navigate(NavigationEntry.of("ResidentDetail")
+ *       .withData("residentId", resident.getResidentId())
+ *       .withData("returnQuery", searchField.getText())  // lưu query để khôi phục
+ *   );
+ * </pre>
+ * Khi back() về, {@code onNavigatedTo} sẽ nhận lại data này và set lại searchField.
+ *
+ * <p><b>Lưu ý hiện tại:</b> Chi tiết cư dân vẫn mở qua Dialog (modal),
+ * nên chưa cần lưu state. Nếu sau này chuyển sang full-screen navigate thì
+ * {@code onNavigatedTo} bên dưới sẽ tự khôi phục.
+ */
+public class ResidentController extends BaseController implements Navigable {
 
     /* ── Navbar ── */
     @FXML private VBox navbar;
@@ -19,32 +43,56 @@ public class ResidentController extends BaseController {
     /* ── Sub-controller của ResidentTable.fxml ── */
     @FXML private ResidentTableController residentTableController;
 
-    /* ────────────────────────────────────────────
+    /* ════════════════════════════════════════════
+       Navigable — khôi phục trạng thái khi back()
+    ════════════════════════════════════════════ */
+
+    /**
+     * Được AppRouter gọi sau khi FXML load xong.
+     * Khôi phục search query và kết quả nếu được truyền vào.
+     *
+     * @param data map data từ NavigationEntry trước đó
+     */
+    @Override
+    public void onNavigatedTo(Map<String, Object> data) {
+        String query = (String) data.getOrDefault("searchQuery", "");
+        if (!query.isEmpty()) {
+            searchField.setText(query);
+            residentTableController.findResident(query);
+        } else {
+            residentTableController.reloadAll();
+        }
+    }
+
+    /* ════════════════════════════════════════════
        Tìm kiếm
-    ──────────────────────────────────────────── */
+    ════════════════════════════════════════════ */
+
     @FXML
     private void handleSearch(ActionEvent event) {
         String query = searchField.getText().trim();
         residentTableController.findResident(query);
     }
 
-    /* ────────────────────────────────────────────
-       Tải lại toàn bộ danh sách
-    ──────────────────────────────────────────── */
+    /* ════════════════════════════════════════════
+       Tải lại
+    ════════════════════════════════════════════ */
+
     @FXML
     private void handleReload(ActionEvent event) {
         searchField.clear();
         residentTableController.reloadAll();
     }
 
-    /* ────────────────────────────────────────────
-       Thêm cư dân mới — mở dialog nhập liệu
-    ──────────────────────────────────────────── */
+    /* ════════════════════════════════════════════
+       Thêm cư dân mới
+    ════════════════════════════════════════════ */
+
     @FXML
     private void handleAdd(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/view/ResidentFormView.fxml"));
+                getClass().getResource("/view/ResidentFormView.fxml"));
             javafx.scene.Parent root = loader.load();
 
             ResidentFormController formController = loader.getController();
