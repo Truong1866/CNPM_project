@@ -91,9 +91,17 @@ public class ApartmentController extends BaseController {
             @Override
             protected void updateItem(Instant item, boolean empty) {
                 super.updateItem(item, empty);
-                setText(empty || item == null ? "Chưa xóa" : DT_FMT.format(item));
+                if (empty || item == null) {
+                    setText("✓ Còn hoạt động");
+                    setStyle("-fx-text-fill: #1b8a3a;");
+                } else {
+                    setText("✗ Đã xóa");
+                    setStyle("-fx-text-fill: #dc2626;");
+                }
             }
         });
+
+
 
         setupActionCol();
         reloadAll();
