@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import repository.HouseReceiRepo;
 import repository.ReceivableRepo;
+import repository.HouseRegRepo;
 import services.HouseReceiServices;
 import services.ReceivableServices;
 import user.AuthManager;
@@ -219,6 +220,11 @@ public class FinanceController extends BaseController {
 
             Receivable created = formController.getResult();
             if (created != null) {
+                // ✅ FIX: Tạo HouseRecei cho tất cả các căn hộ (nếu bắt buộc)
+                if (created.isMandatory()) {
+                    createHouseReceiForAllHouses(created);
+                }
+
                 // Refresh lại dữ liệu hiển thị (danh sách khoản thu)
                 reloadAll();
                 showInfo("Thành công", "Khoản thu mới đã được thêm thành công!");
@@ -300,5 +306,39 @@ public class FinanceController extends BaseController {
     private void reloadAll() {
         masterData.setAll(houseReceiServices.findAll());
         houseReceiTable.setItems(masterData);
+    }
+
+    /**
+     * ✅ FIX: Tạo HouseRecei cho tất cả các căn hộ hiện có khi thêm khoản thu bắt buộc.
+     * Đầu vào: receivable — khoản thu mới vừa được tạo
+     * Đầu ra: không có (tạo HouseRecei trong background)
+     */
+    private void createHouseReceiForAllHouses(Receivable receivable) {
+        try {
+            HouseRegRepo houseRegRepo = new HouseRegRepo();
+            List<HouseReg> allHouses = houseRegRepo.findAllActive();
+
+            for (HouseReg house : allHouses) {
+                // Kiểm tra HouseRecei chưa tồn tại
+                HouseRecei existing = houseReceiServices.findByCompositeId(
+                        house.getHouseId(), receivable.getReceiId());
+
+                if (existing == null) {
+                    HouseRecei houseRecei = new HouseRecei();
+                    houseRecei.setHouseReg(house);
+                    houseRecei.setReceivable(receivable);
+                    houseRecei.setQuantity(0);  // Mặc định 0
+                    houseRecei.setStatus(false); // Chưa thanh toán
+                    houseRecei.setPayDeadline(
+                            receivableServices.calculateDefaultDeadline());
+
+                    houseReceiServices.addHouseRecei(houseRecei);
+                }
+            }
+            logger.info("Created HouseRecei for all houses for receivable: {}",
+                    receivable.getReceiId());
+        } catch (Exception e) {
+            logger.error("Failed to create HouseRecei for all houses", e);
+        }
     }
 }

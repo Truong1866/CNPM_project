@@ -16,7 +16,9 @@ public class HouseRegRepo {
      * Đầu vào: không có
      * Đầu ra: List<HouseReg> tất cả đăng ký
      */
-    public List<HouseReg> findAll() {
+
+    // Trong HouseRegRepo.java
+    public List<HouseReg> findAllActive() {
         try (Session session = DB_manager.getFactory().openSession()) {
             return session.createQuery(
                     "FROM HouseReg WHERE deleteAt IS NULL", HouseReg.class).list();

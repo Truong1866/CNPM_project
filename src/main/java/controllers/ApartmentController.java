@@ -168,6 +168,7 @@ public class ApartmentController extends BaseController {
         }
 
         apartmentTable.setItems(FXCollections.observableArrayList(result));
+        apartmentTable.refresh();
     }
 
     @FXML

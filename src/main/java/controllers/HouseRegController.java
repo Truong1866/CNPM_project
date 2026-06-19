@@ -103,7 +103,7 @@ public class HouseRegController extends BaseController {
      * Tải lại toàn bộ danh sách hộ khẩu chưa bị xóa.
      */
     private void loadData() {
-        List<HouseReg> all = houseRegRepo.findAll();
+        List<HouseReg> all = houseRegRepo.findAllActive();
         houseList.setAll(all);
         houseTable.setItems(houseList);
     }

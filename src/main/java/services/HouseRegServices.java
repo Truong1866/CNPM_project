@@ -28,7 +28,7 @@ public class HouseRegServices {
      */
     public List<HouseReg> findAll() {
         try {
-            return houseRegRepo.findAll();
+            return houseRegRepo.findAllActive();
         } catch (Exception e) {
             logger.error("findAll house_reg failed: {}", e.getMessage(), e);
             return List.of();
