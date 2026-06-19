@@ -44,7 +44,6 @@ mvnw.cmd
 .env
 logs
 out
-image
 runConfigurations
 database.png
 dependency-reduced-pom.xml
