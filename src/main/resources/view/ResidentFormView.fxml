@@ -39,7 +39,7 @@
         <DatePicker fx:id="birthdayPicker" promptText="dd/MM/yyyy" GridPane.rowIndex="2" GridPane.columnIndex="1" />
 
         <Label text="Số điện thoại" styleClass="label-heading" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-        <TextField fx:id="phoneField" promptText="VD: 0901234567" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+        <TextField fx:id="teleField" promptText="VD: 0901234567" GridPane.rowIndex="3" GridPane.columnIndex="1" />
 
         <Label text="Địa chỉ" styleClass="label-heading" GridPane.rowIndex="4" GridPane.columnIndex="0" />
         <TextField fx:id="addressField" promptText="Địa chỉ chi tiết" GridPane.rowIndex="4" GridPane.columnIndex="1" />

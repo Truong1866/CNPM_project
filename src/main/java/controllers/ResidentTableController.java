@@ -99,12 +99,14 @@ public class ResidentTableController {
             Parent root = loader.load();
 
             ResidentFormController formController = loader.getController();
-            formController.setResident(resident);   // điền sẵn dữ liệu
 
             Stage dialog = new Stage();
             dialog.setTitle("Chi tiết cư dân");
             dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.setScene(new Scene(root));
+            dialog.setScene(new Scene(root, 520, 420));
+
+            formController.setResident(resident);
+
             dialog.showAndWait();
 
             Resident updated = formController.getResult();
